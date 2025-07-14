@@ -37,10 +37,7 @@ export function SalesPage() {
   };
 
   const handleBuyClick = () => {
-    toast({
-      title: "Compra Realizada com Sucesso!",
-      description: "Seu acesso foi enviado para o seu e-mail.",
-    });
+    window.location.href = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
   };
 
   const symptoms = [
