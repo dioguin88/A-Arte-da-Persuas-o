@@ -3,12 +3,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Check, Bomb, BrainCircuit, Eye, Files, UserCheck, ShieldAlert, CircleAlert, Lock } from "lucide-react";
+import { Check, Bomb, BrainCircuit, Eye, Files, UserCheck, ShieldAlert, CircleAlert, Lock, ShieldCheck, HelpCircle, Award } from "lucide-react";
 import { CountdownTimer } from "./countdown-timer";
 import { useState, useEffect } from "react";
 import { Checkbox } from "./ui/checkbox";
 import Image from "next/image";
 import { toast } from "@/hooks/use-toast";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { FloatingCTA } from "./floating-cta";
 
 export function SalesPage() {
   const [isExpired, setIsExpired] = useState(false);
@@ -75,25 +77,41 @@ export function SalesPage() {
 
   const testimonials = [
     {
-      image: "https://placehold.co/500x300.png",
+      image: "https://placehold.co/400x150.png",
       'data-ai-hint': 'testimonial message',
       alt: "Depoimento de cliente satisfeito em uma conversa de WhatsApp",
     },
     {
-      image: "https://placehold.co/500x300.png",
+      image: "https://placehold.co/400x200.png",
       'data-ai-hint': 'testimonial linkedin',
       alt: "Depoimento de cliente satisfeito em um post do LinkedIn",
     },
     {
-      image: "https://placehold.co/500x300.png",
+      image: "https://placehold.co/400x150.png",
       'data-ai-hint': 'testimonial email',
       alt: "Depoimento de cliente satisfeito em um email",
     },
   ];
 
+  const faqs = [
+    {
+      question: "E se eu não gostar?",
+      answer: "Você tem 7 dias para pedir reembolso. Acessa tudo, testa, e se não for pra você, o reembolso é feito de forma automática, sem perguntas."
+    },
+    {
+      question: "É para iniciantes?",
+      answer: "Sim! O conteúdo foi desenhado para te levar do zero absoluto à influência avançada, com exemplos práticos e passo a passo."
+    },
+    {
+      question: "Vou receber certificado?",
+      answer: "Sim, ao concluir o curso você receberá um certificado com validação digital para adicionar ao seu currículo e LinkedIn."
+    }
+  ]
+
   return (
-    <div className="fade-in bg-background text-foreground">
-      <header className="bg-primary p-3 text-center font-bold text-primary-foreground">
+    <div className="fade-in bg-background text-foreground bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(229,57,53,0.1),rgba(255,255,255,0))]">
+      <FloatingCTA disabled={isExpired} onClick={handleBuyClick} />
+      <header className="bg-primary p-3 text-center font-bold text-primary-foreground shadow-lg">
         <div className="flex items-center justify-center gap-2">
           <Bomb className="h-5 w-5 animate-pulse" />
           <span>Esta página se autodestruirá em 10 minutos. Você tem uma chance.</span>
@@ -102,39 +120,41 @@ export function SalesPage() {
 
       <main className="container mx-auto max-w-4xl px-4 py-8 md:py-16">
         <section className="text-center">
-          <h1 className="font-headline text-4xl font-bold text-foreground md:text-5xl">Você já sentiu que ninguém te leva a sério, mesmo sendo inteligente?</h1>
+          <h1 className="font-headline text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">Você já sentiu que ninguém te leva a sério, mesmo sendo inteligente?</h1>
           <p className="mt-4 text-lg text-muted-foreground md:text-xl">Enquanto outros conseguem tudo com um sorriso, você precisa implorar. Isso não é justo. É questão de técnica.</p>
         </section>
 
         <Separator className="my-12 md:my-16" />
 
-        <section className="mx-auto max-w-2xl rounded-lg border border-border bg-card p-6 shadow-lg">
-          <h2 className="text-center font-headline text-2xl font-bold md:text-3xl">Diagnóstico Rápido</h2>
-          <p className="mt-2 text-center text-muted-foreground">Se você marcar 2 ou mais, esta página é sua salvação.</p>
-          <div className="mt-6 space-y-4">
-            {symptoms.map((symptom, index) => (
-              <div key={index} className="flex items-center space-x-3 rounded-md border p-4">
-                <Checkbox id={`symptom-${index}`} onCheckedChange={handleSymptomCheck} />
-                <label
-                  htmlFor={`symptom-${index}`}
-                  className="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  {symptom}
-                </label>
-              </div>
-            ))}
-          </div>
-          {symptomsChecked > 0 && (
-            <p className="mt-6 text-center text-lg font-bold text-primary animate-pulse">
-                Continue... você está no caminho certo para resolver isso.
-            </p>
-          )}
+        <section className="mx-auto max-w-2xl">
+          <Card className="p-6 shadow-xl transform -rotate-1">
+            <h2 className="text-center font-headline text-2xl font-bold md:text-3xl">Diagnóstico Rápido</h2>
+            <p className="mt-2 text-center text-muted-foreground">Se você marcar 2 ou mais, esta página é sua salvação.</p>
+            <div className="mt-6 space-y-4">
+              {symptoms.map((symptom, index) => (
+                <div key={index} className="flex items-center space-x-3 rounded-md border bg-background p-4 shadow-sm transition-transform hover:scale-105">
+                  <Checkbox id={`symptom-${index}`} onCheckedChange={handleSymptomCheck} />
+                  <label
+                    htmlFor={`symptom-${index}`}
+                    className="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    {symptom}
+                  </label>
+                </div>
+              ))}
+            </div>
+            {symptomsChecked > 0 && (
+              <p className="mt-6 text-center text-lg font-bold text-primary animate-pulse">
+                  Continue... você está no caminho certo para resolver isso.
+              </p>
+            )}
+          </Card>
         </section>
 
         <Separator className="my-12 md:my-16" />
         
         <section id="offer" className="scroll-mt-20 text-center">
-            <Card className="relative overflow-hidden border-2 border-primary bg-card shadow-2xl">
+            <Card className="relative overflow-hidden border-2 border-primary bg-card shadow-2xl transform rotate-1">
                 <div className="absolute -top-4 -right-4 z-10 animate-pulse rounded-full bg-primary p-3 text-primary-foreground shadow-lg">
                     <ShieldAlert className="h-8 w-8" />
                 </div>
@@ -145,11 +165,11 @@ export function SalesPage() {
                     <p className="mt-4 text-lg text-muted-foreground">Valor real comprovado por dezenas de alunos. Garantia de 7 dias. Você só perde se NÃO testar.</p>
                     
                     <div className="my-8 flex flex-col items-center justify-center gap-4 md:flex-row">
-                        <div className="rounded-xl border-2 border-dashed border-red-500 bg-red-500/10 p-6 text-center text-red-500 line-through decoration-2">
+                        <div className="rounded-xl border-2 border-dashed border-red-500 bg-red-500/10 p-6 text-center text-red-500 line-through decoration-2 transform -rotate-3">
                             <span className="text-sm font-semibold uppercase">De</span>
                             <p className="font-headline text-5xl font-bold">R$497</p>
                         </div>
-                        <div className="rounded-xl border-2 border-green-500 bg-green-500/10 p-8 text-center text-green-600 shadow-lg">
+                        <div className="rounded-xl border-2 border-green-500 bg-green-500/10 p-8 text-center text-green-600 shadow-lg transform rotate-3">
                              <span className="text-sm font-semibold uppercase">Por Apenas</span>
                             <p className="font-headline text-7xl font-bold">R$10</p>
                         </div>
@@ -168,8 +188,8 @@ export function SalesPage() {
           </h2>
           <div className="mx-auto mt-8 grid max-w-4xl gap-6 md:grid-cols-2">
             {features.map((feature, index) => (
-              <div key={index} className="flex items-start gap-4 rounded-lg border p-4 transition-all hover:bg-card hover:shadow-md">
-                <div className="flex-shrink-0">{feature.icon}</div>
+              <div key={index} className="flex items-start gap-4 rounded-lg border p-4 transition-all hover:bg-card hover:shadow-lg hover:-translate-y-1">
+                <div className="flex-shrink-0 transition-transform group-hover:scale-110">{feature.icon}</div>
                 <div>
                   <h3 className="text-lg font-bold text-foreground">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.description}</p>
@@ -182,19 +202,76 @@ export function SalesPage() {
         <Separator className="my-12 md:my-16" />
 
         <section>
+          <div className="flex flex-col items-center gap-8 md:flex-row md:gap-12">
+            <div className="w-full md:w-1/3 text-center md:text-left">
+              <Image 
+                src="https://placehold.co/400x400.png"
+                data-ai-hint="professional headshot"
+                alt="Foto do especialista"
+                width={400}
+                height={400}
+                className="rounded-full mx-auto shadow-2xl border-4 border-primary/50"
+              />
+            </div>
+            <div className="w-full md:w-2/3">
+              <h2 className="font-headline text-3xl font-bold">Quem vai te guiar</h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Sou <strong>[Seu Nome]</strong>, especialista em persuasão e consultor de comunicação com <strong>+7.000 alunos</strong> treinados. Minha missão é simples: transformar pessoas comuns em líderes de influência, usando as mesmas técnicas que bilionários e executivos de ponta usam secretamente para moldar o mundo ao seu redor.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <Separator className="my-12 md:my-16" />
+
+        <section>
           <h2 className="flex items-center justify-center gap-3 text-center font-headline text-3xl font-bold md:text-4xl">
             <UserCheck className="h-8 w-8 text-accent" />
             <span>Depoimentos 100% Verificados</span>
           </h2>
           <div className="mt-8 grid gap-8 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-                <CardContent className="p-0">
-                  <Image src={testimonial.image} alt={testimonial.alt} width={500} height={300} className="w-full" data-ai-hint={testimonial['data-ai-hint']}/>
+              <Card key={index} className="overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:-rotate-2">
+                <CardContent className="p-0 bg-card">
+                  <Image src={testimonial.image} alt={testimonial.alt} width={400} height={200} className="w-full" data-ai-hint={testimonial['data-ai-hint']}/>
                 </CardContent>
               </Card>
             ))}
           </div>
+        </section>
+        
+        <Separator className="my-12 md:my-16" />
+
+        <section className="text-center max-w-3xl mx-auto">
+            <Card className="border-green-500 bg-green-500/10 shadow-2xl">
+              <CardContent className="p-8">
+                <ShieldCheck className="h-16 w-16 text-green-600 mx-auto" />
+                <h2 className="mt-4 font-headline text-3xl font-bold text-green-700">
+                  Garantia Incondicional de 7 Dias
+                </h2>
+                <p className="mt-4 text-lg text-green-800">
+                  Você pode acessar todo o conteúdo, aplicar as técnicas e decidir se é para você. Se por qualquer motivo não ficar 100% satisfeito, basta um clique para ter seu reembolso total. O risco é todo meu.
+                </p>
+              </CardContent>
+            </Card>
+        </section>
+
+        <Separator className="my-12 md:my-16" />
+
+        <section className="max-w-3xl mx-auto">
+            <h2 className="text-center font-headline text-3xl font-bold md:text-4xl mb-8">
+                Suas Dúvidas, Respondidas
+            </h2>
+            <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                      <AccordionTrigger className="text-lg font-semibold hover:no-underline">{faq.question}</AccordionTrigger>
+                      <AccordionContent className="text-md text-muted-foreground">
+                          {faq.answer}
+                      </AccordionContent>
+                  </AccordionItem>
+                ))}
+            </Accordion>
         </section>
 
         <Separator className="my-12 md:my-16" />
