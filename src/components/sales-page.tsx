@@ -182,9 +182,9 @@ export function SalesPage() {
             )}
           </Card>
         </section>
-
-        <Separator className="my-12 md:my-16" />
         
+        <Separator className="my-12 md:my-16" />
+
         <section id="vsl" className="scroll-mt-20 text-center">
             <h2 className="flex items-center justify-center gap-3 text-center font-headline text-3xl font-bold md:text-4xl">
               <Tv className="h-8 w-8 text-accent" />
