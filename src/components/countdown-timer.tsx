@@ -8,28 +8,35 @@ interface CountdownTimerProps {
 }
 
 export function CountdownTimer({ onTimerEnd, isExpired }: CountdownTimerProps) {
-  const [timeLeft, setTimeLeft] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedTime = localStorage.getItem('countdownEndTime');
-      if (savedTime) {
-        const endTime = parseInt(savedTime, 10);
-        const remaining = Math.max(0, endTime - Date.now());
-        if (remaining === 0 && !isExpired) {
-          onTimerEnd();
-        }
-        return {
-          minutes: Math.floor((remaining / 1000 / 60) % 60),
-          seconds: Math.floor((remaining / 1000) % 60),
-        };
-      }
+  const [timeLeft, setTimeLeft] = useState({ minutes: 10, seconds: 0 });
+
+  useEffect(() => {
+    // Initialize state from localStorage only on the client
+    const savedTime = localStorage.getItem('countdownEndTime');
+    let endTime;
+
+    if (savedTime) {
+      endTime = parseInt(savedTime, 10);
+    } else {
+      endTime = Date.now() + 10 * 60 * 1000;
+      localStorage.setItem('countdownEndTime', String(endTime));
     }
-    // Set initial time to 10 minutes if no saved time
-    const newEndTime = Date.now() + 10 * 60 * 1000;
-    if (typeof window !== 'undefined') {
-        localStorage.setItem('countdownEndTime', String(newEndTime));
+
+    const calculateTimeLeft = () => {
+      const remaining = Math.max(0, endTime - Date.now());
+      return {
+        minutes: Math.floor((remaining / 1000 / 60) % 60),
+        seconds: Math.floor((remaining / 1000) % 60),
+      };
+    };
+
+    const remainingTime = calculateTimeLeft();
+    setTimeLeft(remainingTime);
+
+    if (remainingTime.minutes === 0 && remainingTime.seconds === 0 && !isExpired) {
+        onTimerEnd();
     }
-    return { minutes: 10, seconds: 0 };
-  });
+  }, [isExpired, onTimerEnd]);
 
   useEffect(() => {
     if (isExpired) {
