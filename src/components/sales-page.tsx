@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Check, Bomb, BrainCircuit, Eye, Files, UserCheck, ShieldAlert, CircleAlert, Lock, ShieldCheck, HelpCircle, Award } from "lucide-react";
+import { Check, Bomb, BrainCircuit, Eye, Files, UserCheck, ShieldAlert, CircleAlert, Lock, ShieldCheck, HelpCircle, Award, Sparkles, TrendingUp, ThumbsUp, Star } from "lucide-react";
 import { CountdownTimer } from "./countdown-timer";
 import { useState, useEffect } from "react";
 import { Checkbox } from "./ui/checkbox";
@@ -11,6 +11,8 @@ import Image from "next/image";
 import { toast } from "@/hooks/use-toast";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { FloatingCTA } from "./floating-cta";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+
 
 export function SalesPage() {
   const [isExpired, setIsExpired] = useState(false);
@@ -73,6 +75,28 @@ export function SalesPage() {
       title: "Presença de autoridade",
       description: "Você entra nos lugares e é naturalmente respeitado."
     },
+  ];
+
+  const futureSensations = [
+      {
+          icon: <ThumbsUp className="h-10 w-10 text-accent" />,
+          text: "As pessoas finalmente ouvindo com atenção quando você fala.",
+      },
+      {
+          icon: <TrendingUp className="h-10 w-10 text-accent" />,
+          text: "Ganhando respeito onde antes era ignorado e sendo promovido.",
+      },
+      {
+          icon: <Sparkles className="h-10 w-10 text-accent" />,
+          text: "Influenciando sem esforço — como um mestre invisível.",
+      }
+  ]
+
+  const valueBreakdown = [
+      { item: "Técnicas de persuasão de bilionários", value: "R$497" },
+      { item: "Acesso vitalício e atualizações", value: "R$197" },
+      { item: "Scripts prontos + Material de apoio", value: "R$97" },
+      { item: "Suporte exclusivo por 90 dias", value: "R$67" },
   ];
 
   const testimonials = [
@@ -198,6 +222,22 @@ export function SalesPage() {
             ))}
           </div>
         </section>
+        
+        <Separator className="my-12 md:my-16" />
+
+        <section>
+            <h2 className="text-center font-headline text-3xl font-bold md:text-4xl mb-8">
+                Você Vai Sentir Isso na Pele...
+            </h2>
+            <div className="grid gap-8 md:grid-cols-3">
+                {futureSensations.map((sensation, index) => (
+                    <Card key={index} className="text-center p-6 transform transition-all hover:scale-105 hover:-rotate-2 shadow-lg">
+                        <div className="flex justify-center mb-4">{sensation.icon}</div>
+                        <p className="text-lg font-medium text-foreground">{sensation.text}</p>
+                    </Card>
+                ))}
+            </div>
+        </section>
 
         <Separator className="my-12 md:my-16" />
 
@@ -223,6 +263,32 @@ export function SalesPage() {
         </section>
 
         <Separator className="my-12 md:my-16" />
+        
+        <section>
+          <h2 className="flex items-center justify-center gap-3 text-center font-headline text-3xl font-bold md:text-4xl">
+            <Award className="h-8 w-8 text-accent" />
+            <span>Certificado de Conclusão Incluso</span>
+          </h2>
+          <div className="mt-8 flex flex-col md:flex-row items-center gap-8 bg-card p-8 rounded-lg shadow-xl border">
+              <div className="md:w-1/2">
+                <Image
+                  src="https://placehold.co/600x400.png"
+                  alt="Mockup do certificado"
+                  data-ai-hint="certificate mockup"
+                  width={600}
+                  height={400}
+                  className="rounded-lg shadow-2xl transform hover:scale-105 transition-transform"
+                />
+              </div>
+              <div className="md:w-1/2">
+                <p className="text-lg text-muted-foreground">
+                  Ao concluir, você recebe um certificado nominal, válido em todo território nacional. É a prova do seu novo superpoder, perfeito para impulsionar seu currículo e perfil no LinkedIn.
+                </p>
+              </div>
+          </div>
+        </section>
+
+        <Separator className="my-12 md:my-16" />
 
         <section>
           <h2 className="flex items-center justify-center gap-3 text-center font-headline text-3xl font-bold md:text-4xl">
@@ -240,6 +306,41 @@ export function SalesPage() {
           </div>
         </section>
         
+        <Separator className="my-12 md:my-16" />
+
+        <section className="text-center max-w-3xl mx-auto">
+            <h2 className="text-center font-headline text-3xl font-bold md:text-4xl mb-8">
+                Quanto Vale Ter Acesso a Tudo Isso?
+            </h2>
+            <Card className="shadow-xl">
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="text-left font-bold text-foreground">O que você recebe</TableHead>
+                            <TableHead className="text-right font-bold text-foreground">Valor Real</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {valueBreakdown.map((item, index) => (
+                        <TableRow key={index}>
+                            <TableCell className="font-medium">{item.item}</TableCell>
+                            <TableCell className="text-right line-through text-muted-foreground">{item.value}</TableCell>
+                        </TableRow>
+                        ))}
+                        <TableRow className="bg-primary/10">
+                            <TableCell className="font-bold text-primary">Total Real</TableCell>
+                            <TableCell className="text-right font-bold line-through text-muted-foreground">R$858</TableCell>
+                        </TableRow>
+                         <TableRow className="bg-green-500/10">
+                            <TableCell className="font-extrabold text-green-700 text-lg">Você paga hoje</TableCell>
+                            <TableCell className="text-right font-extrabold text-green-700 text-2xl">R$10</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </Card>
+        </section>
+
+
         <Separator className="my-12 md:my-16" />
 
         <section className="text-center max-w-3xl mx-auto">
