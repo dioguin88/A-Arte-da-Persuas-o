@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -143,7 +144,7 @@ export function SalesPage() {
       <header className="fade-in-down sticky top-0 z-20 bg-primary p-3 text-center font-bold text-primary-foreground shadow-lg">
         <div className="flex items-center justify-center gap-2">
           <Bomb className="h-5 w-5 animate-pulse" />
-          <span>Esta página se autodestruirá em 10 minutos. Você tem uma chance.</span>
+          <span>Esta página se autodestruirá em 20 minutos. Você tem uma chance.</span>
         </div>
       </header>
 
@@ -151,7 +152,7 @@ export function SalesPage() {
         <section className="text-center">
           <h1 className="font-headline text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">Você já sentiu que ninguém te leva a sério, mesmo sendo inteligente?</h1>
           <p className="mt-4 text-lg text-muted-foreground md:text-xl">Enquanto outros conseguem tudo com um sorriso, você precisa implorar. Isso não é justo. É questão de técnica.</p>
-          <p className="mt-6 text-sm font-semibold text-primary/80">Você tem acesso exclusivo a esta página por 10 minutos. Após isso, a condição desaparece.</p>
+          <p className="mt-6 text-sm font-semibold text-primary/80">Você tem acesso exclusivo a esta página por 20 minutos. Após isso, a condição desaparece.</p>
         </section>
 
         <Separator className="my-12 md:my-16" />
@@ -210,6 +211,7 @@ export function SalesPage() {
                       alt="Capa do produto A Arte da Persuasão"
                       width={500}
                       height={300}
+                      priority
                       className="rounded-lg shadow-xl mx-auto mb-6 transform hover:scale-105 transition-transform"
                     />
                     <h2 className="font-headline text-3xl font-bold text-primary md:text-4xl">

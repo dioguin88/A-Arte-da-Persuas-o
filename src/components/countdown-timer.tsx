@@ -8,7 +8,8 @@ interface CountdownTimerProps {
 }
 
 export function CountdownTimer({ onTimerEnd, isExpired }: CountdownTimerProps) {
-  const [timeLeft, setTimeLeft] = useState({ minutes: 10, seconds: 0 });
+  const initialMinutes = 20;
+  const [timeLeft, setTimeLeft] = useState({ minutes: initialMinutes, seconds: 0 });
 
   useEffect(() => {
     // Initialize state from localStorage only on the client
@@ -17,8 +18,14 @@ export function CountdownTimer({ onTimerEnd, isExpired }: CountdownTimerProps) {
 
     if (savedTime) {
       endTime = parseInt(savedTime, 10);
+      // If the saved time is in the past, consider it expired immediately
+      if (endTime < Date.now()) {
+        if (!isExpired) onTimerEnd();
+        setTimeLeft({ minutes: 0, seconds: 0 });
+        return;
+      }
     } else {
-      endTime = Date.now() + 10 * 60 * 1000;
+      endTime = Date.now() + initialMinutes * 60 * 1000;
       localStorage.setItem('countdownEndTime', String(endTime));
     }
 
@@ -29,46 +36,25 @@ export function CountdownTimer({ onTimerEnd, isExpired }: CountdownTimerProps) {
         seconds: Math.floor((remaining / 1000) % 60),
       };
     };
-
-    const remainingTime = calculateTimeLeft();
-    setTimeLeft(remainingTime);
-
-    if (remainingTime.minutes === 0 && remainingTime.seconds === 0 && !isExpired) {
-        onTimerEnd();
-    }
-  }, [isExpired, onTimerEnd]);
-
-  useEffect(() => {
-    if (isExpired) {
-      setTimeLeft({ minutes: 0, seconds: 0 });
-      return;
-    }
+    
+    // Set initial time
+    setTimeLeft(calculateTimeLeft());
 
     const timer = setInterval(() => {
-        const savedTime = localStorage.getItem('countdownEndTime');
-        if(!savedTime) {
-            clearInterval(timer);
-            onTimerEnd();
-            return;
-        }
+        const newTimeLeft = calculateTimeLeft();
+        setTimeLeft(newTimeLeft);
 
-        const endTime = parseInt(savedTime, 10);
-        const remaining = Math.max(0, endTime - Date.now());
-
-        if (remaining === 0) {
+        if (newTimeLeft.minutes === 0 && newTimeLeft.seconds === 0) {
             clearInterval(timer);
-            onTimerEnd();
-            setTimeLeft({ minutes: 0, seconds: 0 });
-        } else {
-            setTimeLeft({
-                minutes: Math.floor((remaining / 1000 / 60) % 60),
-                seconds: Math.floor((remaining / 1000) % 60),
-            });
+            if (!isExpired) {
+                onTimerEnd();
+            }
         }
     }, 1000);
 
     return () => clearInterval(timer);
   }, [isExpired, onTimerEnd]);
+
 
   return (
     <div className="flex items-center justify-center space-x-2 md:space-x-4">
