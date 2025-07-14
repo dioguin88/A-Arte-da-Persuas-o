@@ -229,6 +229,21 @@ export function SalesPage() {
                     </div>
                     
                     <p className="font-bold text-foreground">Acesso imediato, só hoje e só nesta página.</p>
+
+                    <Button 
+                      size="lg"
+                      className="mt-8 h-auto w-full max-w-lg whitespace-normal py-4 text-xl font-bold shadow-lg shadow-primary/50 transition-all duration-300 hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-70"
+                      disabled={isExpired}
+                      onClick={handleBuyClick}
+                    >
+                      <span className="animate-pulse mr-2">🔥</span>
+                      {isExpired ? "OFERTA ESGOTADA" : "SIM, EU QUERO PARAR DE SER IGNORADO – POR R$10"}
+                    </Button>
+                    {!isExpired && (
+                       <p className="mt-2 text-sm text-muted-foreground">
+                        ⏳ Liberar meu acesso antes que acabe!
+                       </p>
+                    )}
                 </CardContent>
             </Card>
         </section>
