@@ -442,6 +442,13 @@ export function SalesPage() {
         <section className="text-center">
             <Card className="border-primary border-2 bg-primary/10 shadow-2xl">
                 <CardContent className="p-6 md:p-10">
+                    <Image
+                      src="https://i.postimg.cc/g0LsD9W7/20250618-1223-A-Arte-da-Persuas-o-simple-compose-01jy24dt4teq8rqdy1zxakz5ra.webp"
+                      alt="Capa do produto A Arte da Persuasão"
+                      width={300}
+                      height={180}
+                      className="rounded-lg shadow-xl mx-auto mb-6 transform hover:scale-105 transition-transform"
+                    />
                     <p className="mb-4 flex items-center justify-center gap-2 rounded-lg border border-foreground/20 bg-background/50 p-2 text-sm font-semibold text-muted-foreground">
                       <ShieldAlert className="h-4 w-4 text-primary" />
                       <span>Esta oferta foi liberada para o IP: {fakeIp}</span>
