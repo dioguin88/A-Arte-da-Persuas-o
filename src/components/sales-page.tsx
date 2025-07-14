@@ -284,9 +284,8 @@ export function SalesPage() {
           <div className="flex flex-col items-center gap-8 md:flex-row md:gap-12">
             <div className="w-full md:w-1/3 text-center md:text-left">
               <Image 
-                src="https://placehold.co/400x400.png"
-                data-ai-hint="professional headshot"
-                alt="Foto do especialista"
+                src="https://c.superprof.com/i/m/18997958/600/20241206110428/18997958.webp"
+                alt="Foto do especialista Renato Miranda"
                 width={400}
                 height={400}
                 className="rounded-full mx-auto shadow-2xl border-4 border-primary/50"
