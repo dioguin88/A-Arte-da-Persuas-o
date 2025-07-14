@@ -140,7 +140,7 @@ export function SalesPage() {
   return (
     <div className="fade-in bg-background text-foreground bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(229,57,53,0.1),rgba(255,255,255,0))]">
       <FloatingCTA disabled={isExpired} onClick={handleBuyClick} />
-      <header className="bg-primary p-3 text-center font-bold text-primary-foreground shadow-lg">
+      <header className="fade-in-down sticky top-0 z-20 bg-primary p-3 text-center font-bold text-primary-foreground shadow-lg">
         <div className="flex items-center justify-center gap-2">
           <Bomb className="h-5 w-5 animate-pulse" />
           <span>Esta página se autodestruirá em 10 minutos. Você tem uma chance.</span>
@@ -151,6 +151,7 @@ export function SalesPage() {
         <section className="text-center">
           <h1 className="font-headline text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">Você já sentiu que ninguém te leva a sério, mesmo sendo inteligente?</h1>
           <p className="mt-4 text-lg text-muted-foreground md:text-xl">Enquanto outros conseguem tudo com um sorriso, você precisa implorar. Isso não é justo. É questão de técnica.</p>
+          <p className="mt-6 text-sm font-semibold text-primary/80">Você tem acesso exclusivo a esta página por 10 minutos. Após isso, a condição desaparece.</p>
         </section>
 
         <Separator className="my-12 md:my-16" />
@@ -461,7 +462,7 @@ export function SalesPage() {
                       onClick={handleBuyClick}
                     >
                       <span className="animate-pulse mr-2">🔥</span>
-                      {isExpired ? "OFERTA ESGOTADA" : "EU QUERO TRANSFORMAR MINHA COMUNICAÇÃO AGORA — POR R$10"}
+                      {isExpired ? "OFERTA ESGOTADA" : "SIM, EU QUERO PARAR DE SER IGNORADO – POR R$10"}
                     </Button>
                     {!isExpired && (
                        <p className="mt-2 text-sm text-muted-foreground">
@@ -482,3 +483,5 @@ export function SalesPage() {
     </div>
   );
 }
+
+    
