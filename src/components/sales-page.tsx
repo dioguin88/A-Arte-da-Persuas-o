@@ -3,12 +3,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Check, Bomb, BrainCircuit, Eye, Files, UserCheck, ShieldAlert, CircleAlert, Lock, ShieldCheck, HelpCircle, Award, Sparkles, TrendingUp, ThumbsUp, Star, Quote, Compass } from "lucide-react";
+import { Check, Bomb, BrainCircuit, Eye, Files, UserCheck, ShieldAlert, CircleAlert, Lock, ShieldCheck, HelpCircle, Award, Sparkles, TrendingUp, ThumbsUp, Star, Quote, Compass, MicOff, EyeOff, UserX, Frown, Briefcase } from "lucide-react";
 import { CountdownTimer } from "./countdown-timer";
 import { useState, useEffect } from "react";
 import { Checkbox } from "./ui/checkbox";
 import Image from "next/image";
-import { toast } from "@/hooks/use-toast";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { FloatingCTA } from "./floating-cta";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -41,9 +40,11 @@ export function SalesPage() {
   };
 
   const symptoms = [
-    "Me interrompem quando falo",
-    "Ignoram minhas ideias no trabalho",
-    "Tenho dificuldade de convencer pessoas",
+    { text: "Me interrompem quando falo", icon: <MicOff className="h-5 w-5 text-primary/80" /> },
+    { text: "Ignoram minhas ideias no trabalho", icon: <EyeOff className="h-5 w-5 text-primary/80" /> },
+    { text: "Tenho dificuldade de convencer pessoas", icon: <UserX className="h-5 w-5 text-primary/80" /> },
+    { text: "Sinto que as pessoas não me respeitam naturalmente", icon: <Frown className="h-5 w-5 text-primary/80" /> },
+    { text: "Já perdi oportunidades por não saber me expressar bem", icon: <Briefcase className="h-5 w-5 text-primary/80" /> },
   ];
 
   const features = [
@@ -156,23 +157,26 @@ export function SalesPage() {
         <section className="mx-auto max-w-2xl">
           <Card className="p-6 shadow-xl transform -rotate-1 border-b-4 border-primary/50">
             <h2 className="text-center font-headline text-2xl font-bold md:text-3xl">Diagnóstico Rápido</h2>
-            <p className="mt-2 text-center text-muted-foreground">Se você marcar 2 ou mais, esta página é sua salvação.</p>
+            <p className="mt-2 text-center text-muted-foreground">Se você marcar 3 ou mais, esta página foi feita pra você.</p>
             <div className="mt-6 space-y-4">
               {symptoms.map((symptom, index) => (
                 <div key={index} className="flex items-center space-x-3 rounded-md border bg-background p-4 shadow-sm transition-transform hover:scale-105">
+                  {symptom.icon}
                   <Checkbox id={`symptom-${index}`} onCheckedChange={handleSymptomCheck} />
                   <label
                     htmlFor={`symptom-${index}`}
-                    className="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    className="flex-1 text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    {symptom}
+                    {symptom.text}
                   </label>
                 </div>
               ))}
             </div>
             {symptomsChecked > 0 && (
               <p className="mt-6 text-center text-lg font-bold text-primary animate-pulse">
-                  Continue... você está no caminho certo para resolver isso.
+                  {symptomsChecked >= 3 
+                    ? "Este curso foi feito para você. Continue..." 
+                    : "Continue... você está no caminho certo para resolver isso."}
               </p>
             )}
           </Card>
