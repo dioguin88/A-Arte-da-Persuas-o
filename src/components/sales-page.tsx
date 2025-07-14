@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Check, Bomb, BrainCircuit, Eye, Files, UserCheck, ShieldAlert, CircleAlert, Lock, ShieldCheck, HelpCircle, Award, Sparkles, TrendingUp, ThumbsUp, Star, Quote, Compass, MicOff, EyeOff, UserX, Frown, Briefcase } from "lucide-react";
+import { Check, Bomb, BrainCircuit, Eye, Files, UserCheck, ShieldAlert, CircleAlert, Lock, ShieldCheck, HelpCircle, Award, Sparkles, TrendingUp, ThumbsUp, Star, Quote, Compass, MicOff, EyeOff, UserX, Frown, Briefcase, Tv } from "lucide-react";
 import { CountdownTimer } from "./countdown-timer";
 import { useState, useEffect } from "react";
 import { Checkbox } from "./ui/checkbox";
@@ -11,6 +11,7 @@ import Image from "next/image";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { FloatingCTA } from "./floating-cta";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { WistiaPlayer } from "./wistia-player";
 
 
 export function SalesPage() {
@@ -180,6 +181,19 @@ export function SalesPage() {
               </p>
             )}
           </Card>
+        </section>
+
+        <Separator className="my-12 md:my-16" />
+        
+        <section id="vsl" className="scroll-mt-20 text-center">
+            <h2 className="flex items-center justify-center gap-3 text-center font-headline text-3xl font-bold md:text-4xl">
+              <Tv className="h-8 w-8 text-accent" />
+              <span>Assista Antes Que Essa Página Expire</span>
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">Em menos de 3 minutos, você vai entender por que a maioria das pessoas <strong>nunca aprende a ser respeitada</strong> — e como mudar isso agora.</p>
+            <div className="mt-8 mx-auto max-w-3xl rounded-lg shadow-2xl overflow-hidden border-2 border-primary">
+                <WistiaPlayer videoId="h8f6dbxoam" />
+            </div>
         </section>
 
         <Separator className="my-12 md:my-16" />
