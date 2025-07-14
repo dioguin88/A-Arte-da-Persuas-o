@@ -205,6 +205,13 @@ export function SalesPage() {
                     <ShieldAlert className="h-8 w-8" />
                 </div>
                 <CardContent className="p-6 md:p-10">
+                    <Image
+                      src="https://i.postimg.cc/g0LsD9W7/20250618-1223-A-Arte-da-Persuas-o-simple-compose-01jy24dt4teq8rqdy1zxakz5ra.webp"
+                      alt="Capa do produto A Arte da Persuasão"
+                      width={500}
+                      height={300}
+                      className="rounded-lg shadow-xl mx-auto mb-6 transform hover:scale-105 transition-transform"
+                    />
                     <h2 className="font-headline text-3xl font-bold text-primary md:text-4xl">
                         A Oferta que Você Não Pode Ignorar
                     </h2>
@@ -483,5 +490,3 @@ export function SalesPage() {
     </div>
   );
 }
-
-    
