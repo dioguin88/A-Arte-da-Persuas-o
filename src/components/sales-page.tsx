@@ -310,9 +310,8 @@ export function SalesPage() {
           <div className="mt-8 flex flex-col md:flex-row items-center gap-8 bg-card p-8 rounded-lg shadow-xl border">
               <div className="md:w-1/2">
                 <Image
-                  src="https://placehold.co/600x400.png"
+                  src="https://i.postimg.cc/4ygX31WL/A4-certificado-curso-gest-o-de-pessoas-elegante-azul-e-dourado.webp"
                   alt="Mockup do certificado"
-                  data-ai-hint="certificate mockup"
                   width={600}
                   height={400}
                   className="rounded-lg shadow-2xl transform hover:scale-105 transition-transform"
