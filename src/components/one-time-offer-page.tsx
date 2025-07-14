@@ -11,13 +11,14 @@ export function OneTimeOfferPage() {
 
   useEffect(() => {
     // This effect runs only on the client
-    const hasVisited = localStorage.getItem('persuasionMasterVisited');
-    if (hasVisited) {
-      router.replace('/offer-expired');
-    } else {
-      localStorage.setItem('persuasionMasterVisited', 'true');
-      setIsVerified(true);
-    }
+    // const hasVisited = localStorage.getItem('persuasionMasterVisited');
+    // if (hasVisited) {
+    //   router.replace('/offer-expired');
+    // } else {
+    //   localStorage.setItem('persuasionMasterVisited', 'true');
+    //   setIsVerified(true);
+    // }
+    setIsVerified(true); // Always show the page for development
   }, [router]);
 
   if (!isVerified) {
