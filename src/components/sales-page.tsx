@@ -295,7 +295,7 @@ export function SalesPage() {
             <div className="w-full md:w-2/3">
               <h2 className="font-headline text-3xl font-bold">Quem vai te guiar</h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Sou <strong>[Seu Nome]</strong>, especialista em persuasão e consultor de comunicação com <strong>+7.000 alunos</strong> treinados. Minha missão é simples: transformar pessoas comuns em líderes de influência, usando as mesmas técnicas que bilionários e executivos de ponta usam secretamente para moldar o mundo ao seu redor.
+                Sou <strong>Renato Miranda</strong>, especialista em persuasão e consultor de comunicação com <strong>+7.000 alunos</strong> treinados. Minha missão é simples: transformar pessoas comuns em líderes de influência, usando as mesmas técnicas que bilionários e executivos de ponta usam secretamente para moldar o mundo ao seu redor.
               </p>
             </div>
           </div>
