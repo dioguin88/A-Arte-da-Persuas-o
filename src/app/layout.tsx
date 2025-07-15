@@ -33,6 +33,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdn.utmify.com.br" />
         <link rel="preconnect" href="https://fast.wistia.com" />
+        <link rel="preconnect" href="https://tracking.utmify.com.br" />
         <Script id="utmify-pixel-config" strategy="afterInteractive">
           {`
             window.pixelId = "686f29ebbe2fa26ad7a5b442";
@@ -48,6 +49,7 @@ export default function RootLayout({
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
           data-utmify-prevent-xcod-sck
           data-utmify-prevent-subids
+          strategy="afterInteractive"
           async
           defer
         ></Script>

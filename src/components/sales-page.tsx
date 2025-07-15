@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Check, Bomb, BrainCircuit, Eye, Files, UserCheck, ShieldAlert, CircleAlert, Lock, ShieldCheck, HelpCircle, Award, Sparkles, TrendingUp, ThumbsUp, Star, Quote, Compass, MicOff, EyeOff, UserX, Frown, Briefcase, Tv } from "lucide-react";
+import { Check, Bomb, BrainCircuit, Eye, Files, UserCheck, ShieldAlert, CircleAlert, Lock, ShieldCheck, HelpCircle, Award, Sparkles, TrendingUp, ThumbsUp, Star, Quote, Compass, MicOff, EyeOff, UserX, Frown, Briefcase, Tv, PlayCircle } from "lucide-react";
 import { CountdownTimer } from "./countdown-timer";
 import { useState, useEffect } from "react";
 import { Checkbox } from "./ui/checkbox";
@@ -19,6 +19,7 @@ export function SalesPage() {
   const [fakeIp, setFakeIp] = useState("189.12.34.56");
   const [symptomsChecked, setSymptomsChecked] = useState(0);
   const [checkoutUrl, setCheckoutUrl] = useState('https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ');
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     // Generate a fake IP on client-side to avoid hydration mismatch
@@ -202,7 +203,24 @@ export function SalesPage() {
             </h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">Em menos de 3 minutos, você vai entender por que a maioria das pessoas <strong>nunca aprende a ser respeitada</strong> — e como mudar isso agora.</p>
             <div className="mt-8 mx-auto max-w-3xl rounded-lg shadow-2xl overflow-hidden border-2 border-primary">
-                <WistiaPlayer videoId="h8f6dbxoam" />
+              {showVideo ? (
+                  <WistiaPlayer videoId="h8f6dbxoam" />
+              ) : (
+                <div className="relative cursor-pointer" onClick={() => setShowVideo(true)}>
+                  <Image
+                    src="https://i.postimg.cc/tCSsJ1p1/wistia-thumbnail.jpg"
+                    alt="Video thumbnail"
+                    width={1280}
+                    height={720}
+                    layout="responsive"
+                    className="rounded-lg"
+                    priority
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                    <PlayCircle className="w-20 h-20 text-white/80 hover:text-white transition-colors" />
+                  </div>
+                </div>
+              )}
             </div>
         </section>
 
@@ -219,7 +237,6 @@ export function SalesPage() {
                       alt="Capa do produto A Arte da Persuasão"
                       width={300}
                       height={180}
-                      priority
                       className="rounded-lg shadow-xl mx-auto mb-6 transform hover:scale-105 transition-transform"
                     />
                     <h2 className="font-headline text-3xl font-bold text-primary md:text-4xl">
