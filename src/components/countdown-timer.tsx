@@ -13,41 +13,44 @@ export function CountdownTimer({ onTimerEnd, isExpired }: CountdownTimerProps) {
 
   useEffect(() => {
     let endTime: number;
+    const storedEndTime = localStorage.getItem('offerEndTime');
 
-    const setupTimer = () => {
-      // Always reset the timer on a new visit/page load.
+    if (storedEndTime && parseInt(storedEndTime) > Date.now()) {
+      endTime = parseInt(storedEndTime);
+    } else {
       endTime = Date.now() + initialMinutes * 60 * 1000;
-      localStorage.setItem('countdownEndTime', String(endTime));
-    };
+      localStorage.setItem('offerEndTime', String(endTime));
+    }
+    
+    const timer = setInterval(() => {
+      const now = Date.now();
+      const remaining = Math.max(0, endTime - now);
 
-    const calculateTimeLeft = () => {
-      // Retrieve endTime at the moment of calculation to ensure it's the most current.
-      const savedEndTime = localStorage.getItem('countdownEndTime');
-      const currentEndTime = savedEndTime ? parseInt(savedEndTime, 10) : Date.now();
-      const remaining = Math.max(0, currentEndTime - Date.now());
-      return {
+      const newTimeLeft = {
         minutes: Math.floor((remaining / 1000 / 60) % 60),
         seconds: Math.floor((remaining / 1000) % 60),
       };
-    };
 
-    // Setup a new timer when the component mounts.
-    setupTimer();
-    
-    // Set initial time immediately
-    setTimeLeft(calculateTimeLeft());
+      setTimeLeft(newTimeLeft);
 
-    const timer = setInterval(() => {
-        const newTimeLeft = calculateTimeLeft();
-        setTimeLeft(newTimeLeft);
-
-        if (newTimeLeft.minutes === 0 && newTimeLeft.seconds === 0) {
-            clearInterval(timer);
-            if (!isExpired) {
-                onTimerEnd();
-            }
+      if (remaining === 0) {
+        clearInterval(timer);
+        if (!isExpired) {
+          onTimerEnd();
         }
+      }
     }, 1000);
+
+    // Set initial time immediately
+    const initialRemaining = Math.max(0, endTime - Date.now());
+    setTimeLeft({
+      minutes: Math.floor((initialRemaining / 1000 / 60) % 60),
+      seconds: Math.floor((initialRemaining / 1000) % 60),
+    });
+    
+    if (initialRemaining === 0 && !isExpired) {
+      onTimerEnd();
+    }
 
     return () => clearInterval(timer);
   }, [isExpired, onTimerEnd]);

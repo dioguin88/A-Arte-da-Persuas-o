@@ -217,8 +217,8 @@ export function SalesPage() {
                     <Image
                       src="https://i.postimg.cc/g0LsD9W7/20250618-1223-A-Arte-da-Persuas-o-simple-compose-01jy24dt4teq8rqdy1zxakz5ra.webp"
                       alt="Capa do produto A Arte da Persuasão"
-                      width={500}
-                      height={300}
+                      width={300}
+                      height={180}
                       priority
                       className="rounded-lg shadow-xl mx-auto mb-6 transform hover:scale-105 transition-transform"
                     />

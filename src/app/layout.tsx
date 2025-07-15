@@ -31,6 +31,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        <link rel="preconnect" href="https://cdn.utmify.com.br" />
+        <link rel="preconnect" href="https://fast.wistia.com" />
         <Script id="utmify-pixel-config" strategy="afterInteractive">
           {`
             window.pixelId = "686f29ebbe2fa26ad7a5b442";
