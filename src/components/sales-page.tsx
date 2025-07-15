@@ -18,6 +18,7 @@ export function SalesPage() {
   const [isExpired, setIsExpired] = useState(false);
   const [fakeIp, setFakeIp] = useState("189.12.34.56");
   const [symptomsChecked, setSymptomsChecked] = useState(0);
+  const [checkoutUrl, setCheckoutUrl] = useState('https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ');
 
   useEffect(() => {
     // Generate a fake IP on client-side to avoid hydration mismatch
@@ -26,6 +27,14 @@ export function SalesPage() {
     const octet3 = Math.floor(Math.random() * 256);
     const octet4 = Math.floor(Math.random() * 256);
     setFakeIp(`${octet1}.${octet2}.${octet3}.${octet4}`);
+
+    // Append UTM parameters to checkout URL
+    const baseUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
+    const searchParams = window.location.search;
+    if (searchParams) {
+      setCheckoutUrl(`${baseUrl}${searchParams}`);
+    }
+
   }, []);
 
   const handleTimerEnd = () => {
@@ -37,7 +46,7 @@ export function SalesPage() {
   };
 
   const handleBuyClick = () => {
-    window.location.href = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
+    window.location.href = checkoutUrl;
   };
 
   const symptoms = [
