@@ -22,7 +22,7 @@ export function CountdownTimer({ onTimerEnd, isExpired }: CountdownTimerProps) {
       localStorage.setItem('offerEndTime', String(endTime));
     }
     
-    const timer = setInterval(() => {
+    const updateTimer = () => {
       const now = Date.now();
       const remaining = Math.max(0, endTime - now);
 
@@ -34,23 +34,15 @@ export function CountdownTimer({ onTimerEnd, isExpired }: CountdownTimerProps) {
       setTimeLeft(newTimeLeft);
 
       if (remaining === 0) {
-        clearInterval(timer);
         if (!isExpired) {
           onTimerEnd();
         }
+        clearInterval(timer);
       }
-    }, 1000);
+    };
 
-    // Set initial time immediately
-    const initialRemaining = Math.max(0, endTime - Date.now());
-    setTimeLeft({
-      minutes: Math.floor((initialRemaining / 1000 / 60) % 60),
-      seconds: Math.floor((initialRemaining / 1000) % 60),
-    });
-    
-    if (initialRemaining === 0 && !isExpired) {
-      onTimerEnd();
-    }
+    updateTimer(); // Set initial time immediately
+    const timer = setInterval(updateTimer, 1000);
 
     return () => clearInterval(timer);
   }, [isExpired, onTimerEnd]);
