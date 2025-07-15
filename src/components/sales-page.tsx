@@ -8,6 +8,17 @@ import { PageHeader } from "./sections/page-header";
 import { HeroSection } from "./sections/hero-section";
 import { FinalCallSection } from "./sections/final-call-section";
 import { Separator } from "./ui/separator";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+
 
 const SymptomsSection = dynamic(() => import('./sections/symptoms-section').then(mod => mod.SymptomsSection));
 const VideoSection = dynamic(() => import('./sections/video-section').then(mod => mod.VideoSection));
@@ -24,6 +35,7 @@ const FaqSection = dynamic(() => import('./sections/faq-section').then(mod => mo
 
 export function SalesPage() {
   const [isExpired, setIsExpired] = useState(false);
+  const [showExpiryModal, setShowExpiryModal] = useState(false);
 
   useEffect(() => {
     const storedExpiry = localStorage.getItem('offerExpired');
@@ -33,8 +45,9 @@ export function SalesPage() {
   }, []);
 
   const handleTimerEnd = () => {
-    setIsExpired(true);
-    localStorage.setItem('offerExpired', 'true');
+    if (!isExpired) {
+        setShowExpiryModal(true);
+    }
   };
 
   const handleBuyClick = () => {
@@ -44,6 +57,12 @@ export function SalesPage() {
       const finalUrl = `${baseUrl}${searchParams}`;
       window.location.href = finalUrl;
     }
+  };
+
+  const handleDeclineOffer = () => {
+    setIsExpired(true);
+    localStorage.setItem('offerExpired', 'true');
+    setShowExpiryModal(false);
   };
 
   return (
@@ -80,6 +99,21 @@ export function SalesPage() {
         <Separator className="my-12 md:my-16" />
         <FinalCallSection isExpired={isExpired} onTimerEnd={handleTimerEnd} onBuyClick={handleBuyClick} />
       </main>
+
+       <AlertDialog open={showExpiryModal} onOpenChange={setShowExpiryModal}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>O Tempo Acabou!</AlertDialogTitle>
+            <AlertDialogDescription>
+              Esta é sua última chance de garantir o acesso a "A Arte da Persuasão" por um valor simbólico. Você deseja aproveitar a oferta agora ou vai deixá-la passar para sempre?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={handleDeclineOffer}>Não, deixar passar</AlertDialogCancel>
+            <AlertDialogAction onClick={handleBuyClick}>Sim, quero a oferta!</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
