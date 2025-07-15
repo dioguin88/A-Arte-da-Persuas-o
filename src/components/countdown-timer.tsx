@@ -8,7 +8,7 @@ interface CountdownTimerProps {
 }
 
 export function CountdownTimer({ onTimerEnd, isExpired }: CountdownTimerProps) {
-  const initialMinutes = 20;
+  const initialMinutes = 15;
   const [timeLeft, setTimeLeft] = useState({ minutes: initialMinutes, seconds: 0 });
 
   useEffect(() => {
