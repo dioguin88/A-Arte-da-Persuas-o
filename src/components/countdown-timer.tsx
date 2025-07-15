@@ -12,32 +12,29 @@ export function CountdownTimer({ onTimerEnd, isExpired }: CountdownTimerProps) {
   const [timeLeft, setTimeLeft] = useState({ minutes: initialMinutes, seconds: 0 });
 
   useEffect(() => {
-    // Initialize state from localStorage only on the client
-    const savedTime = localStorage.getItem('countdownEndTime');
-    let endTime;
+    let endTime: number;
 
-    if (savedTime) {
-      endTime = parseInt(savedTime, 10);
-      // If the saved time is in the past, consider it expired immediately
-      if (endTime < Date.now()) {
-        if (!isExpired) onTimerEnd();
-        setTimeLeft({ minutes: 0, seconds: 0 });
-        return;
-      }
-    } else {
+    const setupTimer = () => {
+      // Always reset the timer on a new visit/page load.
       endTime = Date.now() + initialMinutes * 60 * 1000;
       localStorage.setItem('countdownEndTime', String(endTime));
-    }
+    };
 
     const calculateTimeLeft = () => {
-      const remaining = Math.max(0, endTime - Date.now());
+      // Retrieve endTime at the moment of calculation to ensure it's the most current.
+      const savedEndTime = localStorage.getItem('countdownEndTime');
+      const currentEndTime = savedEndTime ? parseInt(savedEndTime, 10) : Date.now();
+      const remaining = Math.max(0, currentEndTime - Date.now());
       return {
         minutes: Math.floor((remaining / 1000 / 60) % 60),
         seconds: Math.floor((remaining / 1000) % 60),
       };
     };
+
+    // Setup a new timer when the component mounts.
+    setupTimer();
     
-    // Set initial time
+    // Set initial time immediately
     setTimeLeft(calculateTimeLeft());
 
     const timer = setInterval(() => {
