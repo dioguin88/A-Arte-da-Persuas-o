@@ -21,7 +21,7 @@ export function VideoSection() {
               ) : (
                 <div className="relative cursor-pointer" onClick={() => setShowVideo(true)}>
                   <Image
-                    src="https://i.postimg.cc/tCSsJ1p1/wistia-thumbnail.jpg"
+                    src="https://i.postimg.cc/QN6jJ0TZ/Chat-GPT-Image-15-de-jul-de-2025-17-05-29.webp"
                     alt="Assista ao vídeo sobre a arte da persuasão"
                     width={1280}
                     height={720}
