@@ -24,23 +24,25 @@ const FaqSection = dynamic(() => import('./sections/faq-section').then(mod => mo
 
 export function SalesPage() {
   const [isExpired, setIsExpired] = useState(false);
-  const [checkoutUrl, setCheckoutUrl] = useState('https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ');
 
   useEffect(() => {
-    const baseUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
-    const searchParams = window.location.search;
-    if (searchParams) {
-      setCheckoutUrl(`${baseUrl}${searchParams}`);
+    const storedExpiry = localStorage.getItem('offerExpired');
+    if (storedExpiry === 'true') {
+      setIsExpired(true);
     }
   }, []);
 
   const handleTimerEnd = () => {
     setIsExpired(true);
+    localStorage.setItem('offerExpired', 'true');
   };
 
   const handleBuyClick = () => {
     if (!isExpired) {
-      window.location.href = checkoutUrl;
+      const baseUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
+      const searchParams = window.location.search;
+      const finalUrl = `${baseUrl}${searchParams}`;
+      window.location.href = finalUrl;
     }
   };
 
