@@ -11,10 +11,10 @@ import { ShieldAlert, CircleAlert, Lock } from "lucide-react";
 interface FinalCallSectionProps {
     isExpired: boolean;
     onTimerEnd: () => void;
-    onBuyClick: () => void;
+    checkoutUrl: string;
 }
 
-export function FinalCallSection({ isExpired, onTimerEnd, onBuyClick }: FinalCallSectionProps) {
+export function FinalCallSection({ isExpired, onTimerEnd, checkoutUrl }: FinalCallSectionProps) {
     const [fakeIp, setFakeIp] = useState("");
 
     useEffect(() => {
@@ -66,10 +66,12 @@ export function FinalCallSection({ isExpired, onTimerEnd, onBuyClick }: FinalCal
                       size="lg"
                       className="h-auto w-full max-w-lg whitespace-normal py-4 text-xl font-bold shadow-lg shadow-primary/50 transition-all duration-300 hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-70"
                       disabled={isExpired}
-                      onClick={onBuyClick}
+                      asChild
                     >
-                      <span className="animate-pulse mr-2">🔥</span>
-                      {isExpired ? "OFERTA ESGOTADA" : "SIM, EU QUERO PARAR DE SER IGNORADO – POR R$10"}
+                      <a href={isExpired ? "#" : checkoutUrl} data-checkout="true">
+                        <span className="animate-pulse mr-2">🔥</span>
+                        {isExpired ? "OFERTA ESGOTADA" : "SIM, EU QUERO PARAR DE SER IGNORADO – POR R$10"}
+                      </a>
                     </Button>
                     {!isExpired && (
                        <p className="mt-2 text-sm text-muted-foreground">

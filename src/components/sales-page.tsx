@@ -18,6 +18,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "./ui/button";
 
 
 const SymptomsSection = dynamic(() => import('./sections/symptoms-section').then(mod => mod.SymptomsSection));
@@ -49,27 +50,18 @@ export function SalesPage() {
         setShowExpiryModal(true);
     }
   };
-
-  const handleBuyClick = () => {
-    if (isExpired) return;
-    
-    // This logic runs on the client-side, making it compatible with static exports.
-    // It reads the current URL's search parameters at the moment of the click.
-    const baseUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
-    const searchParams = typeof window !== 'undefined' ? window.location.search : '';
-    const finalUrl = `${baseUrl}${searchParams}`;
-    window.location.href = finalUrl;
-  };
-
+  
   const handleDeclineOffer = () => {
     setIsExpired(true);
     localStorage.setItem('offerExpired', 'true');
     setShowExpiryModal(false);
   };
+  
+  const checkoutUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
 
   return (
     <div className="fade-in bg-background text-foreground bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(229,57,53,0.1),rgba(255,255,255,0))]">
-      <FloatingCTA disabled={isExpired} onClick={handleBuyClick} />
+      <FloatingCTA disabled={isExpired} checkoutUrl={checkoutUrl} />
       <PageHeader />
 
       <main className="container mx-auto max-w-4xl px-4 py-8 md:py-16">
@@ -79,7 +71,7 @@ export function SalesPage() {
         <Separator className="my-12 md:my-16" />
         <VideoSection />
         <Separator className="my-12 md:my-16" />
-        <OfferSection isExpired={isExpired} onBuyClick={handleBuyClick} />
+        <OfferSection isExpired={isExpired} checkoutUrl={checkoutUrl} />
         <Separator className="my-12 md:my-16" />
         <ForYouSection />
         <Separator className="my-12 md:my-16" />
@@ -99,7 +91,7 @@ export function SalesPage() {
         <Separator className="my-12 md:my-16" />
         <FaqSection />
         <Separator className="my-12 md:my-16" />
-        <FinalCallSection isExpired={isExpired} onTimerEnd={handleTimerEnd} onBuyClick={handleBuyClick} />
+        <FinalCallSection isExpired={isExpired} onTimerEnd={handleTimerEnd} checkoutUrl={checkoutUrl} />
       </main>
 
        <AlertDialog open={showExpiryModal} onOpenChange={setShowExpiryModal}>
@@ -112,7 +104,9 @@ export function SalesPage() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel onClick={handleDeclineOffer}>Não, deixar passar</AlertDialogCancel>
-            <AlertDialogAction onClick={handleBuyClick}>Sim, quero a oferta!</AlertDialogAction>
+            <Button asChild>
+                <a href={checkoutUrl} data-checkout="true">Sim, quero a oferta!</a>
+            </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

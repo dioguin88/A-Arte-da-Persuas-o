@@ -7,10 +7,10 @@ import { cn } from "@/lib/utils";
 
 interface FloatingCTAProps {
   disabled: boolean;
-  onClick: () => void;
+  checkoutUrl: string;
 }
 
-export function FloatingCTA({ disabled, onClick }: FloatingCTAProps) {
+export function FloatingCTA({ disabled, checkoutUrl }: FloatingCTAProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -40,10 +40,12 @@ export function FloatingCTA({ disabled, onClick }: FloatingCTAProps) {
           size="lg"
           className="h-auto w-full max-w-md whitespace-normal py-3 text-lg font-bold shadow-lg transition-all duration-300 hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-70"
           disabled={disabled}
-          onClick={onClick}
+          asChild
         >
-          <Lock className="mr-2 h-5 w-5" />
-          {disabled ? "OFERTA ESGOTADA" : "Liberar Acesso por R$10"}
+          <a href={disabled ? "#" : checkoutUrl} data-checkout="true">
+            <Lock className="mr-2 h-5 w-5" />
+            {disabled ? "OFERTA ESGOTADA" : "Liberar Acesso por R$10"}
+          </a>
         </Button>
       </div>
     </div>

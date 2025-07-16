@@ -5,10 +5,10 @@ import Image from "next/image";
 
 interface OfferSectionProps {
     isExpired: boolean;
-    onBuyClick: () => void;
+    checkoutUrl: string;
 }
 
-export function OfferSection({ isExpired, onBuyClick }: OfferSectionProps) {
+export function OfferSection({ isExpired, checkoutUrl }: OfferSectionProps) {
     return (
         <section id="offer" className="scroll-mt-20 text-center">
             <Card className="relative overflow-hidden border-2 border-primary bg-card shadow-2xl transform rotate-1">
@@ -45,10 +45,12 @@ export function OfferSection({ isExpired, onBuyClick }: OfferSectionProps) {
                       size="lg"
                       className="mt-8 h-auto w-full max-w-lg whitespace-normal py-4 text-xl font-bold shadow-lg shadow-primary/50 transition-all duration-300 hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-70"
                       disabled={isExpired}
-                      onClick={onBuyClick}
+                      asChild
                     >
-                      <span className="animate-pulse mr-2">🔥</span>
-                      {isExpired ? "OFERTA ESGOTADA" : "SIM, EU QUERO PARAR DE SER IGNORADO – POR R$10"}
+                      <a href={isExpired ? "#" : checkoutUrl} data-checkout="true">
+                        <span className="animate-pulse mr-2">🔥</span>
+                        {isExpired ? "OFERTA ESGOTADA" : "SIM, EU QUERO PARAR DE SER IGNORADO – POR R$10"}
+                      </a>
                     </Button>
                     {!isExpired && (
                        <p className="mt-2 text-sm text-muted-foreground">
