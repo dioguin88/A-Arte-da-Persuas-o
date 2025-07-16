@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import { Toaster } from "@/components/ui/toaster";
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, Poppins } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import './globals.css';
 import Script from 'next/script';
@@ -11,11 +11,11 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const playfairDisplay = Playfair_Display({
+const poppins = Poppins({
   subsets: ['latin'],
   weight: ['700'],
   display: 'swap',
-  variable: '--font-playfair-display',
+  variable: '--font-poppins',
 });
 
 
@@ -55,7 +55,7 @@ export default function RootLayout({
           defer
         ></Script>
       </head>
-      <body className={cn("font-body antialiased", inter.variable, playfairDisplay.variable)}>
+      <body className={cn("font-body antialiased", inter.variable, poppins.variable)}>
         {children}
         <Toaster />
         <Script id="utm-handler" strategy="lazyOnload">
@@ -94,7 +94,6 @@ export default function RootLayout({
               getUTMs();
               applyUTMsToLinks();
               
-              // Re-apply on modal open for late-added elements
               const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
                   if (mutation.addedNodes.length) {

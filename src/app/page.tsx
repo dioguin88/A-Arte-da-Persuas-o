@@ -1,5 +1,5 @@
-import { OneTimeOfferPage } from "@/components/one-time-offer-page";
+import { SalesPage } from "@/components/sales-page";
 
 export default function Home() {
-  return <OneTimeOfferPage />;
+  return <SalesPage />;
 }
