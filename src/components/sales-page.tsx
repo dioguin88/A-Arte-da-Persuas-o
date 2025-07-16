@@ -51,12 +51,12 @@ export function SalesPage() {
   };
 
   const handleBuyClick = () => {
-    if (!isExpired) {
-      const baseUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
-      const searchParams = window.location.search;
-      const finalUrl = `${baseUrl}${searchParams}`;
-      window.location.href = finalUrl;
-    }
+    if (isExpired) return;
+    
+    const baseUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
+    const searchParams = typeof window !== 'undefined' ? window.location.search : '';
+    const finalUrl = `${baseUrl}${searchParams}`;
+    window.location.href = finalUrl;
   };
 
   const handleDeclineOffer = () => {
