@@ -10,8 +10,6 @@ import { FinalCallSection } from "./sections/final-call-section";
 import { Separator } from "./ui/separator";
 import {
   AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
@@ -103,7 +101,7 @@ export function SalesPage() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={handleDeclineOffer}>Não, deixar passar</AlertDialogCancel>
+            <Button variant="outline" onClick={handleDeclineOffer}>Não, deixar passar</Button>
             <Button asChild>
                 <a href={checkoutUrl} data-checkout="true">Sim, quero a oferta!</a>
             </Button>

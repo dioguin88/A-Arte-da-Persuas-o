@@ -45,19 +45,56 @@ export default function RootLayout({
             document.head.appendChild(a);
           `}
         </Script>
-        <Script
-          id="utmify-utms"
-          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-          data-utmify-prevent-xcod-sck=""
-          data-utmify-prevent-subids=""
-          strategy="afterInteractive"
-          async
-          defer
-        ></Script>
       </head>
       <body className={cn("font-body antialiased", inter.variable, poppins.variable)}>
         {children}
         <Toaster />
+        <Script id="utm-handler" strategy="afterInteractive">
+          {`
+            (function () {
+              const params = new URLSearchParams(window.location.search);
+              const utms = [
+                'utm_source',
+                'utm_campaign',
+                'utm_medium',
+                'utm_content',
+                'utm_term'
+              ];
+
+              utms.forEach(key => {
+                const value = params.get(key);
+                if (value) {
+                  localStorage.setItem(key, value);
+                }
+              });
+            })();
+
+            document.addEventListener("DOMContentLoaded", function () {
+              const utms = [
+                'utm_source',
+                'utm_campaign',
+                'utm_medium',
+                'utm_content',
+                'utm_term'
+              ];
+
+              const query = utms
+                .map(k => {
+                  const val = localStorage.getItem(k);
+                  return val ? \`\${k}=\${encodeURIComponent(val)}\` : '';
+                })
+                .filter(Boolean)
+                .join('&');
+
+              if (query) {
+                document.querySelectorAll('[data-checkout="true"]').forEach(link => {
+                  const base = link.getAttribute("href").split("?")[0];
+                  link.setAttribute("href", \`\${base}?\${query}\`);
+                });
+              }
+            });
+          `}
+        </Script>
       </body>
     </html>
   );

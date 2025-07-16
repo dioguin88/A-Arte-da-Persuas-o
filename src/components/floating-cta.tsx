@@ -15,7 +15,6 @@ export function FloatingCTA({ disabled, checkoutUrl }: FloatingCTAProps) {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Show CTA after user scrolls down 300px
       if (window.scrollY > 300) {
         setIsVisible(true);
       } else {
