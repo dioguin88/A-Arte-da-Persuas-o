@@ -53,6 +53,8 @@ export function SalesPage() {
   const handleBuyClick = () => {
     if (isExpired) return;
     
+    // This logic runs on the client-side, making it compatible with static exports.
+    // It reads the current URL's search parameters at the moment of the click.
     const baseUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
     const searchParams = typeof window !== 'undefined' ? window.location.search : '';
     const finalUrl = `${baseUrl}${searchParams}`;
