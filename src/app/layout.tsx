@@ -48,8 +48,8 @@ export default function RootLayout({
         <Script
           id="utmify-utms"
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-          data-utmify-prevent-xcod-sck
-          data-utmify-prevent-subids
+          data-utmify-prevent-xcod-sck=""
+          data-utmify-prevent-subids=""
           strategy="afterInteractive"
           async
           defer
@@ -58,53 +58,6 @@ export default function RootLayout({
       <body className={cn("font-body antialiased", inter.variable, poppins.variable)}>
         {children}
         <Toaster />
-        <Script id="utm-handler" strategy="lazyOnload">
-          {`
-            function getUTMs() {
-              const urlParams = new URLSearchParams(window.location.search);
-              for (const key of urlParams.keys()) {
-                if (key.startsWith('utm_')) {
-                  localStorage.setItem(key, urlParams.get(key));
-                }
-              }
-            }
-
-            function applyUTMsToLinks() {
-              const buttons = document.querySelectorAll('[data-checkout="true"]');
-              const utms = {};
-              for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                if (key && key.startsWith('utm_')) {
-                  utms[key] = localStorage.getItem(key);
-                }
-              }
-              const queryString = new URLSearchParams(utms).toString();
-
-              buttons.forEach(button => {
-                const baseUrl = button.getAttribute('href').split('?')[0];
-                if (queryString) {
-                  button.setAttribute('href', \`\${baseUrl}?\${queryString}\`);
-                } else {
-                  button.setAttribute('href', baseUrl);
-                }
-              });
-            }
-
-            document.addEventListener('DOMContentLoaded', () => {
-              getUTMs();
-              applyUTMsToLinks();
-              
-              const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                  if (mutation.addedNodes.length) {
-                    applyUTMsToLinks();
-                  }
-                });
-              });
-              observer.observe(document.body, { childList: true, subtree: true });
-            });
-          `}
-        </Script>
       </body>
     </html>
   );
