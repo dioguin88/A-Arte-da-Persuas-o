@@ -39,9 +39,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        <link rel="preconnect" href="https://cdn.utmify.com.br" />
-        <link rel="preconnect" href="https://fast.wistia.com" />
-        
         <link rel="preload" href="https://i.postimg.cc/d0S979jG/Untitled-design-5.webp" as="image" />
         <link
           rel="preload"
