@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 
 import { FloatingCTA } from "./floating-cta";
 import { PageHeader } from "./sections/page-header";
@@ -57,7 +58,7 @@ export function SalesPage() {
   
 
   return (
-    <div className="fade-in bg-background text-foreground bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(229,57,53,0.1),rgba(255,255,255,0))]">
+    <div className="fade-in">
       <FloatingCTA disabled={isExpired} checkoutUrl={checkoutUrl} />
       <PageHeader />
 

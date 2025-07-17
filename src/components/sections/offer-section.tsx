@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ShieldAlert } from "lucide-react";
+import { ShieldAlert, BadgeCheck, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 
 interface OfferSectionProps {
@@ -53,9 +53,16 @@ export function OfferSection({ isExpired, checkoutUrl }: OfferSectionProps) {
                       </a>
                     </Button>
                     {!isExpired && (
-                       <p className="mt-2 text-sm text-muted-foreground">
-                        ⏳ Liberar meu acesso antes que acabe!
-                       </p>
+                        <div className="mt-4 flex flex-col items-center justify-center gap-4 text-sm text-muted-foreground sm:flex-row">
+                            <div className="flex items-center gap-2">
+                                <ShieldCheck className="h-5 w-5 text-green-500" />
+                                <span>Pagamento 100% Seguro</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <BadgeCheck className="h-5 w-5 text-green-500" />
+                                <span>Garantia de 7 Dias</span>
+                            </div>
+                        </div>
                     )}
                 </CardContent>
             </Card>

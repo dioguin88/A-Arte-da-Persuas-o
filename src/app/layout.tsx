@@ -47,10 +47,13 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={cn("font-body antialiased", inter.variable, poppins.variable)}>
-        {children}
+        <div className="bg-background/80 backdrop-blur-sm">
+            {children}
+        </div>
         <Toaster />
         <Script id="utm-handler" strategy="afterInteractive">
           {`
+            // 1. Captura UTMs e armazena no localStorage
             (function () {
               const params = new URLSearchParams(window.location.search);
               const utms = [
@@ -69,6 +72,7 @@ export default function RootLayout({
               });
             })();
 
+            // 2. Aplica UTMs nos links com [data-checkout]
             document.addEventListener("DOMContentLoaded", function () {
               const utms = [
                 'utm_source',

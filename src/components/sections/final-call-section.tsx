@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CountdownTimer } from "@/components/countdown-timer";
 import { Separator } from "@/components/ui/separator";
-import { ShieldAlert, CircleAlert, Lock } from "lucide-react";
+import { ShieldAlert, CircleAlert, Lock, BadgeCheck, ShieldCheck } from "lucide-react";
 
 interface FinalCallSectionProps {
     isExpired: boolean;
@@ -73,17 +73,22 @@ export function FinalCallSection({ isExpired, onTimerEnd, checkoutUrl }: FinalCa
                         {isExpired ? "OFERTA ESGOTADA" : "SIM, EU QUERO PARAR DE SER IGNORADO – POR R$10"}
                       </a>
                     </Button>
-                    {!isExpired && (
-                       <p className="mt-2 text-sm text-muted-foreground">
-                        ⏳ Liberar meu acesso antes que acabe!
-                       </p>
+                     {!isExpired && (
+                        <div className="mt-4 flex flex-col items-center justify-center gap-4 text-sm text-muted-foreground sm:flex-row">
+                            <div className="flex items-center gap-2">
+                                <ShieldCheck className="h-5 w-5 text-green-500" />
+                                <span>Pagamento 100% Seguro</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <BadgeCheck className="h-5 w-5 text-green-500" />
+                                <span>Garantia de 7 Dias</span>
+                            </div>
+                        </div>
                     )}
                     <div className="mt-4 flex flex-col items-center justify-center gap-2 text-xs text-muted-foreground md:flex-row md:gap-4">
-                        <span className="flex items-center gap-1"><Lock className="h-3 w-3" /> Pagamento 100% seguro</span>
+                        <span className="flex items-center gap-1"><Lock className="h-3 w-3" /> Compra protegida via PIX ou Cartão</span>
                         <Separator orientation="vertical" className="hidden h-4 md:block" />
                         <span>Acesso imediato</span>
-                        <Separator orientation="vertical" className="hidden h-4 md:block" />
-                        <span>Garantia de 7 dias</span>
                     </div>
                 </CardContent>
             </Card>
