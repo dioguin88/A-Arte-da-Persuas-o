@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import { Toaster } from "@/components/ui/toaster";
-import { Inter, Playfair_Display, Poppins } from 'next/font/google';
+import { Inter, Poppins, Playfair_Display } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import './globals.css';
 import Script from 'next/script';
@@ -41,9 +41,8 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdn.utmify.com.br" />
         <link rel="preconnect" href="https://fast.wistia.com" />
-        <link rel="preconnect" href="https://tracking.utmify.com.br" />
-
-        <link rel="preload" as="image" href="https://i.postimg.cc/d0S979jG/Untitled-design-5.webp" />
+        
+        <link rel="preload" href="https://i.postimg.cc/d0S979jG/Untitled-design-5.webp" as="image" />
         <link
           rel="preload"
           href="/_next/static/media/c9a5985854617556-s.p.woff2"
@@ -52,16 +51,25 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
-        <Script id="utmify-pixel-config" strategy="afterInteractive">
+        <Script id="utmify-pixel" strategy="afterInteractive">
           {`
-            window.pixelId = "686f29ebbe2fa26ad7a5b442";
-            var a = document.createElement("script");
-            a.setAttribute("async", "");
-            a.setAttribute("defer", "");
-            a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-            document.head.appendChild(a);
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '686f29ebbe2fa26ad7a5b442');
+            fbq('track', 'PageView');
           `}
         </Script>
+        <noscript>
+          <img height="1" width="1" style={{display: "none"}}
+            src="https://www.facebook.com/tr?id=686f29ebbe2fa26ad7a5b442&ev=PageView&noscript=1"
+          />
+        </noscript>
       </head>
       <body className={cn("font-body antialiased", inter.variable, poppins.variable, playfair.variable)}>
         <div className="bg-background/80 backdrop-blur-sm">
