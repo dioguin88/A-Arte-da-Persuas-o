@@ -17,7 +17,7 @@ export function OfferSection({ isExpired, checkoutUrl }: OfferSectionProps) {
                 </div>
                 <CardContent className="p-6 md:p-10">
                     <Image
-                      src="https://i.postimg.cc/SNGHtwGd/Untitled-design.webp"
+                      src="https://i.postimg.cc/d0S979jG/Untitled-design-5.webp"
                       alt="Capa do produto A Arte da Persuasão"
                       width={400}
                       height={400}
