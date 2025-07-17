@@ -47,10 +47,10 @@ export function FinalCallSection({ isExpired, onTimerEnd, checkoutUrl }: FinalCa
 
                     <div className="my-8">
                         <Image
-                          src="https://i.postimg.cc/g0LsD9W7/20250618-1223-A-Arte-da-Persuas-o-simple-compose-01jy24dt4teq8rqdy1zxakz5ra.webp"
+                          src="https://i.postimg.cc/SNGHtwGd/Untitled-design.webp"
                           alt="Capa do produto A Arte da Persuasão"
-                          width={300}
-                          height={180}
+                          width={400}
+                          height={400}
                           className="rounded-lg shadow-xl mx-auto mb-6 transform hover:scale-105 transition-transform"
                         />
                     </div>

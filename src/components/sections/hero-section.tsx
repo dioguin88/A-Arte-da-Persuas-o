@@ -7,7 +7,7 @@ export function HeroSection() {
                 <div className="order-1 md:order-1 fade-in">
                     <div className="mx-auto rounded-lg bg-transparent p-2 md:p-4">
                         <Image
-                            src="https://i.postimg.cc/QChW49Xf/Mockup.webp"
+                            src="https://i.postimg.cc/SNGHtwGd/Untitled-design.webp"
                             alt="Mockup do produto A Arte da Persuasão"
                             width={500}
                             height={500}
