@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "./ui/button";
 
-
 const SymptomsSection = dynamic(() => import('./sections/symptoms-section').then(mod => mod.SymptomsSection));
 const VideoSection = dynamic(() => import('./sections/video-section').then(mod => mod.VideoSection));
 const OfferSection = dynamic(() => import('./sections/offer-section').then(mod => mod.OfferSection));
@@ -35,6 +34,7 @@ const FaqSection = dynamic(() => import('./sections/faq-section').then(mod => mo
 export function SalesPage() {
   const [isExpired, setIsExpired] = useState(false);
   const [showExpiryModal, setShowExpiryModal] = useState(false);
+  const checkoutUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
 
   useEffect(() => {
     const storedExpiry = localStorage.getItem('offerExpired');
@@ -55,7 +55,6 @@ export function SalesPage() {
     setShowExpiryModal(false);
   };
   
-  const checkoutUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
 
   return (
     <div className="fade-in bg-background text-foreground bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(229,57,53,0.1),rgba(255,255,255,0))]">
