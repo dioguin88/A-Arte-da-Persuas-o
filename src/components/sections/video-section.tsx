@@ -27,7 +27,6 @@ export function VideoSection() {
                     height={720}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="rounded-lg"
-                    priority
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                     <PlayCircle className="w-16 h-16 text-white/80 transition-all hover:text-white hover:scale-110 md:w-20 md:h-20" />

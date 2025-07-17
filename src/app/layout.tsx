@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import { Toaster } from "@/components/ui/toaster";
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, Playfair_Display, Poppins } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import './globals.css';
 import Script from 'next/script';
@@ -9,6 +9,13 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['700'],
+  display: 'swap',
+  variable: '--font-poppins',
 });
 
 const playfair = Playfair_Display({
@@ -35,6 +42,16 @@ export default function RootLayout({
         <link rel="preconnect" href="https://cdn.utmify.com.br" />
         <link rel="preconnect" href="https://fast.wistia.com" />
         <link rel="preconnect" href="https://tracking.utmify.com.br" />
+
+        <link rel="preload" as="image" href="https://i.postimg.cc/d0S979jG/Untitled-design-5.webp" />
+        <link
+          rel="preload"
+          href="/_next/static/media/c9a5985854617556-s.p.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+
         <Script id="utmify-pixel-config" strategy="afterInteractive">
           {`
             window.pixelId = "686f29ebbe2fa26ad7a5b442";
@@ -46,7 +63,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={cn("font-body antialiased", inter.variable, playfair.variable)}>
+      <body className={cn("font-body antialiased", inter.variable, poppins.variable, playfair.variable)}>
         <div className="bg-background/80 backdrop-blur-sm">
             {children}
         </div>
