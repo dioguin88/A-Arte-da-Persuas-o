@@ -56,42 +56,31 @@ export function CountdownTimer({ onTimerEnd, isExpired }: CountdownTimerProps) {
     return () => clearInterval(timer);
   }, [isClient, isExpired, onTimerEnd]);
 
+  const renderTimerBox = (value: number, label: string) => (
+    <div key={label} className="flex flex-col items-center">
+      <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-black/50 text-red-500 shadow-lg backdrop-blur-sm md:h-20 md:w-20" style={{ textShadow: '0 0 6px #ff5555' }}>
+        <span className="font-headline text-5xl font-bold md:text-6xl">
+          {String(value).padStart(2, '0')}
+        </span>
+      </div>
+      <span className="mt-2 text-xs font-semibold uppercase tracking-wider text-primary/80 md:text-sm">{label}</span>
+    </div>
+  );
+
   if (!isClient) {
     // Render a placeholder on the server
     return (
       <div className="flex items-center justify-center space-x-2 md:space-x-4">
-        {Object.entries({
-          Minutos: initialMinutes,
-          Segundos: 0,
-        }).map(([label, value]) => (
-          <div key={label} className="flex flex-col items-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-white/20 text-primary shadow-lg backdrop-blur-sm md:h-20 md:w-20">
-              <span className="font-headline text-4xl font-bold md:text-5xl">
-                {String(value).padStart(2, '0')}
-              </span>
-            </div>
-            <span className="mt-2 text-xs font-semibold uppercase tracking-wider text-primary/80 md:text-sm">{label}</span>
-          </div>
-        ))}
+        {renderTimerBox(initialMinutes, 'Minutos')}
+        {renderTimerBox(0, 'Segundos')}
       </div>
     );
   }
 
   return (
     <div className="flex items-center justify-center space-x-2 md:space-x-4">
-      {Object.entries({
-        Minutos: timeLeft.minutes,
-        Segundos: timeLeft.seconds,
-      }).map(([label, value]) => (
-        <div key={label} className="flex flex-col items-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-white/20 text-primary shadow-lg backdrop-blur-sm md:h-20 md:w-20">
-            <span className="font-headline text-4xl font-bold md:text-5xl">
-              {String(value).padStart(2, '0')}
-            </span>
-          </div>
-          <span className="mt-2 text-xs font-semibold uppercase tracking-wider text-primary/80 md:text-sm">{label}</span>
-        </div>
-      ))}
+      {renderTimerBox(timeLeft.minutes, 'Minutos')}
+      {renderTimerBox(timeLeft.seconds, 'Segundos')}
     </div>
   );
 }
