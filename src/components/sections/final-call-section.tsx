@@ -64,7 +64,7 @@ export function FinalCallSection({ isExpired, onTimerEnd, checkoutUrl }: FinalCa
 
                     <Button 
                       size="lg"
-                      className="h-auto w-full max-w-lg whitespace-normal py-4 text-xl font-bold shadow-lg shadow-primary/50 transition-all duration-300 hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-70"
+                      className="h-auto w-full max-w-lg whitespace-normal py-4 text-xl font-bold shadow-lg shadow-primary/50 transition-all duration-300 hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-70 animate-pulse-light"
                       disabled={isExpired}
                       asChild
                     >

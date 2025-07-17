@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ShieldAlert, BadgeCheck, ShieldCheck } from "lucide-react";
+import { ShieldAlert, BadgeCheck, ShieldCheck, Lock } from "lucide-react";
 import Image from "next/image";
 
 interface OfferSectionProps {
@@ -43,7 +43,7 @@ export function OfferSection({ isExpired, checkoutUrl }: OfferSectionProps) {
 
                     <Button 
                       size="lg"
-                      className="mt-8 h-auto w-full max-w-lg whitespace-normal py-4 text-xl font-bold shadow-lg shadow-primary/50 transition-all duration-300 hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-70"
+                      className="mt-8 h-auto w-full max-w-lg whitespace-normal py-4 text-xl font-bold shadow-lg shadow-primary/50 transition-all duration-300 hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-70 animate-pulse-light"
                       disabled={isExpired}
                       asChild
                     >
@@ -54,6 +54,10 @@ export function OfferSection({ isExpired, checkoutUrl }: OfferSectionProps) {
                     </Button>
                     {!isExpired && (
                         <div className="mt-4 flex flex-col items-center justify-center gap-4 text-sm text-muted-foreground sm:flex-row">
+                            <div className="flex items-center gap-2">
+                                <Lock className="h-4 w-4 text-green-500" />
+                                <span>Compra Protegida</span>
+                            </div>
                             <div className="flex items-center gap-2">
                                 <ShieldCheck className="h-5 w-5 text-green-500" />
                                 <span>Pagamento 100% Seguro</span>

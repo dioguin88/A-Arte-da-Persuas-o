@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import { Toaster } from "@/components/ui/toaster";
-import { Inter, Poppins } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import './globals.css';
 import Script from 'next/script';
@@ -11,11 +11,11 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const poppins = Poppins({
+const playfair = Playfair_Display({
   subsets: ['latin'],
   weight: ['700'],
   display: 'swap',
-  variable: '--font-poppins',
+  variable: '--font-playfair',
 });
 
 
@@ -46,7 +46,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={cn("font-body antialiased", inter.variable, poppins.variable)}>
+      <body className={cn("font-body antialiased", inter.variable, playfair.variable)}>
         <div className="bg-background/80 backdrop-blur-sm">
             {children}
         </div>

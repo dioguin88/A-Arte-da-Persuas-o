@@ -58,7 +58,7 @@ export function CountdownTimer({ onTimerEnd, isExpired }: CountdownTimerProps) {
 
   const renderTimerBox = (value: number, label: string) => (
     <div key={label} className="flex flex-col items-center">
-      <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-black/50 text-red-500 shadow-lg backdrop-blur-sm md:h-20 md:w-20" style={{ textShadow: '0 0 6px #ff5555' }}>
+      <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-black/50 text-red-500 shadow-lg backdrop-blur-sm md:h-24 md:w-24" style={{ textShadow: '0 0 8px #ff4444' }}>
         <span className="font-headline text-5xl font-bold md:text-6xl">
           {String(value).padStart(2, '0')}
         </span>
