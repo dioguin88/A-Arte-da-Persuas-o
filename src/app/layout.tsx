@@ -75,50 +75,26 @@ export default function RootLayout({
         <Toaster />
         <Script id="utm-handler" strategy="afterInteractive">
           {`
-            // 1. Captura UTMs e armazena no localStorage
             (function () {
-              const params = new URLSearchParams(window.location.search);
-              const utms = [
-                'utm_source',
-                'utm_campaign',
-                'utm_medium',
-                'utm_content',
-                'utm_term'
-              ];
-
-              utms.forEach(key => {
-                const value = params.get(key);
-                if (value) {
-                  localStorage.setItem(key, value);
-                }
-              });
-            })();
-
-            // 2. Aplica UTMs nos links com [data-checkout]
-            document.addEventListener("DOMContentLoaded", function () {
-              const utms = [
-                'utm_source',
-                'utm_campaign',
-                'utm_medium',
-                'utm_content',
-                'utm_term'
-              ];
-
-              const query = utms
-                .map(k => {
-                  const val = localStorage.getItem(k);
-                  return val ? \`\${k}=\${encodeURIComponent(val)}\` : '';
-                })
-                .filter(Boolean)
-                .join('&');
-
-              if (query) {
-                document.querySelectorAll('[data-checkout="true"]').forEach(link => {
-                  const base = link.getAttribute("href").split("?")[0];
-                  link.setAttribute("href", \`\${base}?\${query}\`);
-                });
+              const keys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+              const qs = new URLSearchParams(location.search);
+              const found = keys.filter(k => qs.has(k));
+              if (found.length) {
+                sessionStorage.setItem('utm_params', qs.toString());
               }
-            });
+
+              const utm = sessionStorage.getItem('utm_params');
+              if (!utm) return;
+              document.querySelectorAll('a[data-append-utm]')
+                .forEach(a => {
+                  const url = new URL(a.href);
+                  utm.split('&').forEach(p => {
+                    const [k,v] = p.split('=');
+                    if (!url.searchParams.has(k)) url.searchParams.append(k,decodeURIComponent(v || ''));
+                  });
+                  a.href = url.toString();
+                });
+            })();
           `}
         </Script>
       </body>
