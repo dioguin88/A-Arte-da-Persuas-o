@@ -37,10 +37,8 @@ export function SalesPage() {
   const checkoutUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
 
   useEffect(() => {
-    const storedExpiry = localStorage.getItem('offerExpired');
-    if (storedExpiry === 'true') {
-      setIsExpired(true);
-    }
+    // A oferta agora está permanentemente ativa para testes.
+    setIsExpired(false);
   }, []);
 
   const handleTimerEnd = () => {
