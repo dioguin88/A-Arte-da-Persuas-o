@@ -100,7 +100,7 @@ export function SalesPage() {
           <AlertDialogFooter>
             <Button variant="outline" onClick={handleDeclineOffer}>Não, deixar passar</Button>
             <Button asChild>
-                <a href={checkoutUrl} data-append-utm>Sim, quero a oferta!</a>
+                <a href={checkoutUrl} data-utmify-link>Sim, quero a oferta!</a>
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

@@ -68,7 +68,7 @@ export function FinalCallSection({ isExpired, onTimerEnd, checkoutUrl }: FinalCa
                       disabled={isExpired}
                       asChild
                     >
-                      <a href={isExpired ? "#" : checkoutUrl} data-append-utm>
+                      <a href={isExpired ? "#" : checkoutUrl} data-utmify-link>
                         <span className="animate-pulse mr-2">🔥</span>
                         {isExpired ? "OFERTA ESGOTADA" : "SIM, EU QUERO PARAR DE SER IGNORADO – POR R$10"}
                       </a>

@@ -48,7 +48,16 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
-        <Script id="utmify-pixel" strategy="afterInteractive">
+        <Script
+          id="utmify-script"
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          data-utmify-prevent-xcod-sck
+          data-utmify-prevent-subids
+          async
+          defer
+        ></Script>
+        
+        <Script id="fb-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -73,30 +82,6 @@ export default function RootLayout({
             {children}
         </div>
         <Toaster />
-        <Script id="utm-handler" strategy="afterInteractive">
-          {`
-            (function () {
-              const keys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
-              const qs = new URLSearchParams(location.search);
-              const found = keys.filter(k => qs.has(k));
-              if (found.length) {
-                sessionStorage.setItem('utm_params', qs.toString());
-              }
-
-              const utm = sessionStorage.getItem('utm_params');
-              if (!utm) return;
-              document.querySelectorAll('a[data-append-utm]')
-                .forEach(a => {
-                  const url = new URL(a.href);
-                  utm.split('&').forEach(p => {
-                    const [k,v] = p.split('=');
-                    if (!url.searchParams.has(k)) url.searchParams.append(k,decodeURIComponent(v || ''));
-                  });
-                  a.href = url.toString();
-                });
-            })();
-          `}
-        </Script>
       </body>
     </html>
   );
