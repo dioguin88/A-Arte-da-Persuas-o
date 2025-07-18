@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -37,14 +38,12 @@ export function SalesPage() {
   const checkoutUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
 
   useEffect(() => {
-    // A oferta agora está permanentemente ativa para testes.
-    setIsExpired(false);
+    // Reset expiration state on page load for testing purposes
+    setIsExpired(false); 
   }, []);
 
   const handleTimerEnd = () => {
-    if (!isExpired) {
-        setShowExpiryModal(true);
-    }
+    setShowExpiryModal(true);
   };
   
   const handleDeclineOffer = () => {
