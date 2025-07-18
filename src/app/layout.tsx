@@ -47,16 +47,33 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
-
-        <Script
-          id="utmify-script"
-          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-          data-utmify-prevent-xcod-sck
-          data-utmify-prevent-subids
-          async
-          defer
-        ></Script>
+      </head>
+      <body className={cn("font-body antialiased", inter.variable, poppins.variable, playfair.variable)}>
+        <div className="bg-background/80 backdrop-blur-sm">
+            {children}
+        </div>
+        <Toaster />
         
+        {/* UTMify Capture Script */}
+        <Script
+          id="utmify-capture-script"
+          src="https://app.utmify.com/script/utmify.js"
+          strategy="afterInteractive"
+        ></Script>
+
+        {/* UTMify Pixel */}
+        <Script id="utmify-pixel-script" strategy="afterInteractive">
+          {`
+            window.pixelId = "686f29ebbe2fa26ad7a5b442";
+            var a = document.createElement("script");
+            a.setAttribute("async", "");
+            a.setAttribute("defer", "");
+            a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+            document.head.appendChild(a);
+          `}
+        </Script>
+        
+        {/* Facebook Pixel */}
         <Script id="fb-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -76,12 +93,6 @@ export default function RootLayout({
             src="https://www.facebook.com/tr?id=686f29ebbe2fa26ad7a5b442&ev=PageView&noscript=1"
           />
         </noscript>
-      </head>
-      <body className={cn("font-body antialiased", inter.variable, poppins.variable, playfair.variable)}>
-        <div className="bg-background/80 backdrop-blur-sm">
-            {children}
-        </div>
-        <Toaster />
       </body>
     </html>
   );
