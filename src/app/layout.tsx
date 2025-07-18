@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Inter, Poppins, Playfair_Display } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import './globals.css';
-import Script from 'next/script';
+import { TrackingScripts } from '@/components/tracking-scripts';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -53,48 +53,7 @@ export default function RootLayout({
             {children}
         </div>
         <Toaster />
-        
-        {/* UTMify Capture Script */}
-        <Script
-          id="utmify-capture-script"
-          src="https://app.utmify.com/script/utmify.js"
-          strategy="afterInteractive"
-        />
-
-        {/* UTMify Pixel */}
-        <Script id="utmify-pixel-script" strategy="afterInteractive">
-          {`
-            (function() {
-              window.pixelId = "686f29ebbe2fa26ad7a5b442";
-              var a = document.createElement("script");
-              a.setAttribute("async", "");
-              a.setAttribute("defer", "");
-              a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-              document.body.appendChild(a);
-            })();
-          `}
-        </Script>
-        
-        {/* Facebook Pixel */}
-        <Script id="fb-pixel" strategy="afterInteractive">
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1391493778737024');
-            fbq('track', 'PageView');
-          `}
-        </Script>
-        <noscript>
-          <img height="1" width="1" style={{display: "none"}}
-            src="https://www.facebook.com/tr?id=1391493778737024&ev=PageView&noscript=1"
-          />
-        </noscript>
+        <TrackingScripts />
       </body>
     </html>
   );
