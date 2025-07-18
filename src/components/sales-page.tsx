@@ -25,7 +25,7 @@ const OfferSection = dynamic(() => import('./sections/offer-section').then(mod =
 const ForYouSection = dynamic(() => import('./sections/for-you-section').then(mod => mod.ForYouSection));
 const FeaturesSection = dynamic(() => import('./sections/features-section').then(mod => mod.FeaturesSection));
 const SensationSection = dynamic(() => import('./sections/sensation-section').then(mod => mod.SensationSection));
-const SpecialistSection = dynamic(() => import('./sections/specialist-section').then(mod => mod.SpecialistSection));
+const SpecialistSection = dynamic(() => import('./sections/specialist-section'));
 const CertificateSection = dynamic(() => import('./sections/certificate-section').then(mod => mod.CertificateSection));
 const TestimonialsSection = dynamic(() => import('./sections/testimonials-section').then(mod => mod.TestimonialsSection));
 const ValueSection = dynamic(() => import('./sections/value-section').then(mod => mod.ValueSection));
@@ -37,18 +37,12 @@ export function SalesPage() {
   const [showExpiryModal, setShowExpiryModal] = useState(false);
   const checkoutUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ';
 
-  useEffect(() => {
-    // Reset expiration state on page load for testing purposes
-    setIsExpired(false); 
-  }, []);
-
   const handleTimerEnd = () => {
     setShowExpiryModal(true);
   };
   
   const handleDeclineOffer = () => {
     setIsExpired(true);
-    localStorage.setItem('offerExpired', 'true');
     setShowExpiryModal(false);
   };
   

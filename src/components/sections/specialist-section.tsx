@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function SpecialistSection() {
+export default function SpecialistSection() {
     return (
         <section>
           <div className="flex flex-col items-center gap-8 md:flex-row md:gap-12">
