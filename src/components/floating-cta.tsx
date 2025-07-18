@@ -41,7 +41,7 @@ export function FloatingCTA({ disabled, checkoutUrl }: FloatingCTAProps) {
           disabled={disabled}
           asChild
         >
-          <a href={disabled ? "#" : checkoutUrl} data-utmify-link>
+          <a href={disabled ? "#" : checkoutUrl}>
             <Lock className="mr-2 h-5 w-5" />
             {disabled ? "OFERTA ESGOTADA" : "Liberar Acesso por R$10"}
           </a>

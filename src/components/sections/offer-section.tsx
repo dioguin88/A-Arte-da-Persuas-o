@@ -47,7 +47,7 @@ export function OfferSection({ isExpired, checkoutUrl }: OfferSectionProps) {
                       disabled={isExpired}
                       asChild
                     >
-                      <a href={isExpired ? "#" : checkoutUrl} data-utmify-link>
+                      <a href={isExpired ? "#" : checkoutUrl}>
                         <span className="animate-pulse mr-2">🔥</span>
                         {isExpired ? "OFERTA ESGOTADA" : "SIM, EU QUERO PARAR DE SER IGNORADO – POR R$10"}
                       </a>
