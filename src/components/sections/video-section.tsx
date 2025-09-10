@@ -10,7 +10,7 @@ export default function VideoSection({ videoId }: VideoSectionProps) {
   return (
     <section>
         <h2 className="text-center font-headline text-3xl font-bold md:text-4xl mb-8">
-            Veja a Técnica em Ação
+            A Demonstração Prática do Poder que Você Está Prestes a Ter
         </h2>
         <div className="overflow-hidden rounded-lg border-2 border-primary shadow-2xl shadow-primary/20">
             <WistiaPlayer videoId={videoId} />
