@@ -34,7 +34,7 @@ export function SalesPage() {
         <Separator className="my-12" />
         <SensationSection />
         <Separator className="my-12" />
-        <VideoSection videoId="j4z3w2qj5z" />
+        <VideoSection videoId="h8f6dbxoam" />
         <Separator className="my-12" />
         <SpecialistSection />
         <Separator className="my-12" />
