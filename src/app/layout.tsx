@@ -38,16 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <head>
-        <link rel="preload" href="https://i.postimg.cc/d0S979jG/Untitled-design-5.webp" as="image" />
-        <link
-          rel="preload"
-          href="/_next/static/media/c9a5985854617556-s.p.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-      </head>
+      <head />
       <body className={cn("font-body antialiased", inter.variable, poppins.variable, playfair.variable)}>
         <div className="bg-background/80 backdrop-blur-sm">
             {children}

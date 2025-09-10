@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { HeroSection } from "./sections/hero-section";
@@ -17,6 +16,7 @@ import SpecialistSection from "./sections/specialist-section";
 import { ForYouSection } from "./sections/for-you-section";
 import { FeaturesSection } from "./sections/features-section";
 import { FaqSection } from "./sections/faq-section";
+import { ValueSection } from "./sections/value-section";
 
 
 export function SalesPage() {
