@@ -17,7 +17,7 @@ export function FinalCallSection({ checkoutUrl }: FinalCallSectionProps) {
                       <Zap className="h-8 w-8" />
                       Decida Antes Que o Relógio Zere
                     </h2>
-                    <p className="mt-4 text-lg text-muted-foreground">Essa condição especial estará ativa por tempo limitado. Depois, o acesso retorna ao valor cheio: R$497.</p>
+                    <p className="mt-4 text-lg text-muted-foreground">Essa condição especial estará ativa por tempo limitado. Depois, o acesso retorna ao valor cheio: R$297.</p>
                     <Button 
                       size="lg"
                       className="mt-8 h-auto w-full max-w-lg whitespace-normal py-4 text-xl font-bold shadow-lg shadow-primary/50 transition-all duration-300 hover:scale-105 animate-pulse-light"

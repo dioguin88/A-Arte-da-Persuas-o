@@ -10,16 +10,14 @@ interface OfferSectionProps {
 const testFeatures = [
     "Acesso ao Módulo 1 completo",
     "Técnicas iniciais de persuasão + leitura de expressão",
-    "Certificado Básico",
     "Garantia de 3 dias",
 ];
 
 const proFeatures = [
-    "Curso completo com todos os módulos",
+    "Programa completo com todos os módulos",
     "Scripts prontos para influenciar, vender e negociar",
     "Técnicas de hipnose conversacional e presença de autoridade",
     "Suporte VIP por 90 dias",
-    "Certificado Profissional",
     "Acesso Vitalício com todas as atualizações",
     "Garantia total de 7 dias",
 ];
@@ -62,8 +60,8 @@ export function OfferSection({ testCheckoutUrl, proCheckoutUrl }: OfferSectionPr
                     <CardContent className="flex flex-1 flex-col justify-between">
                         <div>
                             <div className="mb-6">
-                                <span className="text-lg text-muted-foreground line-through">De R$497</span>
-                                <p className="font-headline text-5xl font-bold text-primary">por R$67</p>
+                                <span className="text-lg text-muted-foreground line-through">De R$297</span>
+                                <p className="font-headline text-5xl font-bold text-primary">por R$29,90</p>
                             </div>
                             <ul className="space-y-3 text-left">
                                 {proFeatures.map((feature, i) => (
@@ -75,7 +73,7 @@ export function OfferSection({ testCheckoutUrl, proCheckoutUrl }: OfferSectionPr
                             </ul>
                         </div>
                         <Button asChild size="lg" className="mt-8 w-full animate-pulse-light">
-                            <a href={proCheckoutUrl}>Quero dominar a persuasão por R$67</a>
+                            <a href={proCheckoutUrl}>Quero dominar a persuasão por R$29,90</a>
                         </Button>
                     </CardContent>
                 </Card>
