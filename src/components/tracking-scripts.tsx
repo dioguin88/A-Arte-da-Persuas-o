@@ -10,12 +10,21 @@ export function TrackingScripts() {
     // Define o pixelId na window para ser acessado pelo script da Utmify
     (window as any).pixelId = "689de8fe58737296e1584ed7";
 
-    // Cria e anexa o script da Utmify ao head do documento
-    const utmifyScript = document.createElement("script");
-    utmifyScript.setAttribute("async", "");
-    utmifyScript.setAttribute("defer", "");
-    utmifyScript.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-    document.head.appendChild(utmifyScript);
+    // Cria e anexa o script do pixel da Utmify ao head do documento
+    const utmifyPixelScript = document.createElement("script");
+    utmifyPixelScript.setAttribute("async", "");
+    utmifyPixelScript.setAttribute("defer", "");
+    utmifyPixelScript.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(utmifyPixelScript);
+
+    // --- Lógica para o script de UTMS da Utmify ---
+    const utmifyUtmScript = document.createElement("script");
+    utmifyUtmScript.src = "https://cdn.utmify.com.br/scripts/utms/latest.js";
+    utmifyUtmScript.setAttribute("data-utmify-prevent-xcod-sck", "");
+    utmifyUtmScript.setAttribute("data-utmify-prevent-subids", "");
+    utmifyUtmScript.async = true;
+    utmifyUtmScript.defer = true;
+    document.body.appendChild(utmifyUtmScript);
 
 
     // --- Lógica para anexar UTMs aos links de checkout ---
@@ -92,9 +101,12 @@ export function TrackingScripts() {
     // Limpa os recursos quando o componente é desmontado
     return () => {
         observer.disconnect();
-        // Remove o script para evitar duplicação em navegações no lado do cliente
-        if (document.head.contains(utmifyScript)) {
-          document.head.removeChild(utmifyScript);
+        // Remove os scripts para evitar duplicação em navegações no lado do cliente
+        if (document.head.contains(utmifyPixelScript)) {
+          document.head.removeChild(utmifyPixelScript);
+        }
+        if (document.body.contains(utmifyUtmScript)) {
+          document.body.removeChild(utmifyUtmScript);
         }
     };
 
