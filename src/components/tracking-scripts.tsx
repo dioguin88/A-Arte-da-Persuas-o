@@ -93,7 +93,9 @@ export function TrackingScripts() {
     return () => {
         observer.disconnect();
         // Remove o script para evitar duplicação em navegações no lado do cliente
-        document.head.removeChild(utmifyScript);
+        if (document.head.contains(utmifyScript)) {
+          document.head.removeChild(utmifyScript);
+        }
     };
 
   }, []);
