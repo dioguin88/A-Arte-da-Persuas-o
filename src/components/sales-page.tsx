@@ -20,8 +20,8 @@ import { ValueSection } from "./sections/value-section";
 
 
 export function SalesPage() {
-  const testCheckoutUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ'; // Placeholder
-  const proCheckoutUrl = 'https://www.ggcheckout.com/checkout/v2/dIRGB2gA0lYsqYANkqqJ'; // Placeholder
+  const testCheckoutUrl = 'https://www.ggcheckout.com/checkout/v2/dvSy70FqbKrgKUmznZAY';
+  const proCheckoutUrl = 'https://www.ggcheckout.com/checkout/v2/CFyJgHWtmg8FpQNuncfw';
 
   return (
     <div className="fade-in">
