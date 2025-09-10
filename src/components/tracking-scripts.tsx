@@ -1,10 +1,24 @@
 "use client";
 
 import { useEffect } from 'react';
+import Script from 'next/script';
 
 // Componente para capturar parâmetros UTM e anexá-los aos links de checkout
 export function TrackingScripts() {
   useEffect(() => {
+    // --- Lógica para o pixel da Utmify ---
+    // Define o pixelId na window para ser acessado pelo script da Utmify
+    (window as any).pixelId = "689de8fe58737296e1584ed7";
+
+    // Cria e anexa o script da Utmify ao head do documento
+    const utmifyScript = document.createElement("script");
+    utmifyScript.setAttribute("async", "");
+    utmifyScript.setAttribute("defer", "");
+    utmifyScript.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(utmifyScript);
+
+
+    // --- Lógica para anexar UTMs aos links de checkout ---
     // Este código só roda no navegador do cliente
     const params = new URLSearchParams(window.location.search);
     const utmParams: { [key: string]: string } = {};
@@ -75,9 +89,11 @@ export function TrackingScripts() {
         subtree: true
     });
 
-    // Limpa o observer quando o componente é desmontado
+    // Limpa os recursos quando o componente é desmontado
     return () => {
         observer.disconnect();
+        // Remove o script para evitar duplicação em navegações no lado do cliente
+        document.head.removeChild(utmifyScript);
     };
 
   }, []);
