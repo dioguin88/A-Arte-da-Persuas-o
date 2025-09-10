@@ -5,17 +5,17 @@ const testimonials = [
     {
       quote: "Nunca consegui convencer meus clientes como agora. O curso vale 100x o que paguei.",
       name: "Fernanda M.",
-      avatar: "https://i.postimg.cc/85hZwywy/fernanda.png"
+      avatar: "https://i.postimg.cc/Nfp6s6XG/Verano-sin-fin-en-Madrid.jpg"
     },
     {
       quote: "Eu era invisível nas reuniões. Agora sou líder de projeto. Mudou meu jogo.",
       name: "Ricardo A.",
-      avatar: "https://i.postimg.cc/T3N3PNA8/ricardo.png"
+      avatar: "https://i.postimg.cc/cLGYg5Zz/487404830_18265638103276512_3484920864617637438_n._(1).jpg"
     },
     {
       quote: "Consegui negociar um aumento de 30% no meu salário. Estou sem palavras.",
       name: "Juliana C.",
-      avatar: "https://i.postimg.cc/TydpL1MM/juliana.png"
+      avatar: "https://i.postimg.cc/FzkbdWkQ/image.webp"
     },
 ];
 
