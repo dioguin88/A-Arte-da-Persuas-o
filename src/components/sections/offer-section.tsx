@@ -1,75 +1,85 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ShieldAlert, BadgeCheck, ShieldCheck, Lock } from "lucide-react";
-import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check } from "lucide-react";
 
 interface OfferSectionProps {
-    isExpired: boolean;
-    checkoutUrl: string;
+    testCheckoutUrl: string;
+    proCheckoutUrl: string;
 }
 
-export function OfferSection({ isExpired, checkoutUrl }: OfferSectionProps) {
+const testFeatures = [
+    "Acesso ao Módulo 1 completo",
+    "Técnicas iniciais de persuasão + leitura de expressão",
+    "Certificado Básico",
+    "Garantia de 3 dias",
+];
+
+const proFeatures = [
+    "Curso completo com todos os módulos",
+    "Scripts prontos para influenciar, vender e negociar",
+    "Técnicas de hipnose conversacional e presença de autoridade",
+    "Suporte VIP por 90 dias",
+    "Certificado Profissional",
+    "Acesso Vitalício com todas as atualizações",
+    "Garantia total de 7 dias",
+];
+
+export function OfferSection({ testCheckoutUrl, proCheckoutUrl }: OfferSectionProps) {
     return (
         <section id="offer" className="scroll-mt-20 text-center">
-            <Card className="relative overflow-hidden border-2 border-primary bg-card shadow-2xl transform rotate-1">
-                <div className="absolute -top-4 -right-4 z-10 animate-pulse rounded-full bg-primary p-3 text-primary-foreground shadow-lg">
-                    <ShieldAlert className="h-8 w-8" />
-                </div>
-                <CardContent className="p-6 md:p-10">
-                    <Image
-                      src="https://i.postimg.cc/d0S979jG/Untitled-design-5.webp"
-                      alt="Capa do produto A Arte da Persuasão"
-                      width={400}
-                      height={400}
-                      className="rounded-lg shadow-xl mx-auto mb-6 transform hover:scale-105 transition-transform"
-                    />
-                    <h2 className="font-headline text-3xl font-bold text-primary md:text-4xl">
-                        A Oferta que Você Não Pode Ignorar
-                    </h2>
-                    <p className="mt-4 text-lg text-muted-foreground">Valor real comprovado por dezenas de alunos. Garantia de 7 dias. Você só perde se NÃO testar.</p>
-                    
-                    <div className="my-8 flex flex-col items-center justify-center gap-4 md:flex-row">
-                        <div className="rounded-xl border-2 border-dashed border-red-500 bg-red-500/10 p-6 text-center text-red-500 line-through decoration-2 transform -rotate-3">
-                            <span className="text-sm font-semibold uppercase">De</span>
-                            <p className="font-headline text-5xl font-bold">R$497</p>
+            <h2 className="font-headline text-3xl font-bold md:text-4xl">
+                Escolha o Seu Acesso
+            </h2>
+            <div className="mt-8 grid gap-8 md:grid-cols-2">
+                {/* Test Offer */}
+                <Card className="flex flex-col border-2 bg-card shadow-lg">
+                    <CardHeader>
+                        <CardTitle className="font-headline text-2xl">🔹 Acesso TESTE</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex flex-1 flex-col justify-between">
+                        <div>
+                            <p className="mb-6 font-headline text-4xl font-bold">R$19,90</p>
+                            <ul className="space-y-3 text-left">
+                                {testFeatures.map((feature, i) => (
+                                    <li key={i} className="flex items-start gap-3">
+                                        <Check className="h-5 w-5 flex-shrink-0 text-green-500 mt-1" />
+                                        <span>{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                        <div className="rounded-xl border-2 border-green-500 bg-green-500/10 p-8 text-center text-green-600 shadow-lg transform rotate-3">
-                             <span className="text-sm font-semibold uppercase">Por Apenas</span>
-                            <p className="font-headline text-7xl font-bold">R$10</p>
-                        </div>
-                    </div>
-                    
-                    <p className="font-bold text-foreground">Acesso imediato, só hoje e só nesta página.</p>
+                        <Button asChild size="lg" className="mt-8 w-full">
+                            <a href={testCheckoutUrl}>Quero testar agora por R$19,90</a>
+                        </Button>
+                    </CardContent>
+                </Card>
 
-                    <Button 
-                      size="lg"
-                      className="mt-8 h-auto w-full max-w-lg whitespace-normal py-4 text-xl font-bold shadow-lg shadow-primary/50 transition-all duration-300 hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-70 animate-pulse-light"
-                      disabled={isExpired}
-                      asChild
-                    >
-                      <a href={isExpired ? "#" : checkoutUrl}>
-                        <span className="animate-pulse mr-2">🔥</span>
-                        {isExpired ? "OFERTA ESGOTADA" : "SIM, EU QUERO PARAR DE SER IGNORADO – POR R$10"}
-                      </a>
-                    </Button>
-                    {!isExpired && (
-                        <div className="mt-4 flex flex-col items-center justify-center gap-4 text-sm text-muted-foreground sm:flex-row">
-                            <div className="flex items-center gap-2">
-                                <Lock className="h-4 w-4 text-green-500" />
-                                <span>Compra Protegida</span>
+                {/* Pro Offer */}
+                <Card className="flex flex-col border-2 border-amber-500 bg-amber-500/10 shadow-2xl ring-4 ring-amber-500/50">
+                    <CardHeader>
+                        <CardTitle className="font-headline text-2xl text-amber-400">👑 Acesso PRO</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex flex-1 flex-col justify-between">
+                        <div>
+                            <div className="mb-6">
+                                <span className="text-lg text-muted-foreground line-through">De R$497</span>
+                                <p className="font-headline text-5xl font-bold text-primary">por R$67</p>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <ShieldCheck className="h-5 w-5 text-green-500" />
-                                <span>Pagamento 100% Seguro</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <BadgeCheck className="h-5 w-5 text-green-500" />
-                                <span>Garantia de 7 Dias</span>
-                            </div>
+                            <ul className="space-y-3 text-left">
+                                {proFeatures.map((feature, i) => (
+                                    <li key={i} className="flex items-start gap-3 font-medium">
+                                        <Check className="h-5 w-5 flex-shrink-0 text-green-500 mt-1" />
+                                        <span>{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                    )}
-                </CardContent>
-            </Card>
+                        <Button asChild size="lg" className="mt-8 w-full animate-pulse-light">
+                            <a href={proCheckoutUrl}>Quero dominar a persuasão por R$67</a>
+                        </Button>
+                    </CardContent>
+                </Card>
+            </div>
         </section>
     )
 }
