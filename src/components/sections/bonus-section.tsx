@@ -4,7 +4,7 @@ import { Gift } from "lucide-react";
 const bonuses = [
     "Mini curso de Comunicação Assertiva",
     "Guia prático de Gatilhos Mentais Avançados",
-    "Plantão de dúvidas com o especialista Renato Miranda",
+    "Plantão de dúvidas com a Comunidade Enganjada e Proativa a ajudar",
 ]
 
 export function BonusSection() {
