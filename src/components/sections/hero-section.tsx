@@ -29,7 +29,7 @@ export function HeroSection() {
                             <div className="flex items-center gap-3">
                                 <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
                                 <p className="text-sm font-medium text-foreground">
-                                    <strong>Boa notícia:</strong> A técnica revelada no vídeo é simples, ética e pode ser aplicada por qualquer pessoa.
+                                    <strong>Boa notícia:</strong> As técnicas reveladas no Método são simples, éticas e podem ser aplicadas por qualquer pessoa.
                                 </p>
                             </div>
                         </CardContent>
