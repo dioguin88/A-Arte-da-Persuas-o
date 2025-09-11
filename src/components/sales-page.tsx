@@ -17,6 +17,7 @@ import { ForYouSection } from "./sections/for-you-section";
 import { FeaturesSection } from "./sections/features-section";
 import { FaqSection } from "./sections/faq-section";
 import { ValueSection } from "./sections/value-section";
+import { TransformationSection } from "./sections/transformation-section";
 
 
 export function SalesPage() {
@@ -41,6 +42,8 @@ export function SalesPage() {
         <ForYouSection />
         <Separator className="my-12" />
         <FeaturesSection />
+        <Separator className="my-12" />
+        <TransformationSection />
         <Separator className="my-12" />
         <OfferSection testCheckoutUrl={testCheckoutUrl} proCheckoutUrl={proCheckoutUrl} />
         <Separator className="my-12" />
