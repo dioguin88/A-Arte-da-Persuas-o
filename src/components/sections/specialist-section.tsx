@@ -16,7 +16,7 @@ export default function SpecialistSection() {
             <div className="w-full md:w-2/3">
               <h2 className="font-headline text-3xl font-bold">Quem vai te guiar</h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Sou <strong>Renato Miranda</strong>, especialista em persuasão e consultor de comunicação com <strong>+7.000 alunos</strong> treinados. Minha missão é simples: transformar pessoas comuns em líderes de influência, usando as mesmas técnicas que bilionários e executivos de ponta usam secretamente para moldar o mundo ao seu redor.
+                Sou Renato Miranda, o <strong>Instrutor-Chefe da Mente Inconsciente</strong>, com mais de <strong>10.000 horas de campo</strong> aplicando técnicas de persuasão estratégica em negociações, relacionamentos e treinamentos corporativos. Meu método já formou <strong>mais de 17 mil mentes blindadas</strong> contra manipulação e ensinou como virar o jogo psicológico com precisão cirúrgica.
               </p>
             </div>
           </div>
