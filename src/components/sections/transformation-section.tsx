@@ -2,7 +2,7 @@
 import { CheckCircle } from "lucide-react";
 
 const transformations = [
-    { text: "Se posicionar como ", bold: "autoridade natural", postText: " em qualquer ambiente — sem esforço ou arrogância." },
+    { text: "Se posicionar como ", bold: "autoridade natural", postText: " em qualquer ambiente sem esforço ou arrogância." },
     { text: "Influenciar pessoas ", bold: "de forma sutil e estratégica", postText: ", até mesmo em conversas comuns." },
     { text: "Criar ", bold: "comunicações magnéticas", postText: " que capturam atenção e geram respeito imediato." },
     { text: "Tomar decisões com ", bold: "clareza mental", postText: ", sem ser afetado por manipulações externas." },
