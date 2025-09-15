@@ -2,9 +2,9 @@
 import { CheckCircle } from "lucide-react";
 
 const transformations = [
+    { text: "Criar ", bold: "comunicações magnéticas", postText: " que capturam atenção e abrem portas em qualquer ambiente." },
     { text: "Se posicionar como ", bold: "autoridade natural", postText: " em qualquer ambiente sem esforço ou arrogância." },
     { text: "Influenciar pessoas ", bold: "de forma sutil e estratégica", postText: ", até mesmo em conversas comuns." },
-    { text: "Criar ", bold: "comunicações magnéticas", postText: " que capturam atenção e geram respeito imediato." },
     { text: "Tomar decisões com ", bold: "clareza mental", postText: ", sem ser afetado por manipulações externas." },
     { text: "Usar sua ", bold: "presença e linguagem", postText: " para conquistar mais espaço, oportunidades e reconhecimento." },
 ];
