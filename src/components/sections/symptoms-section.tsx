@@ -24,6 +24,9 @@ export function SymptomsSection() {
           </div>
         ))}
       </div>
+      <p className="mt-8 text-center text-lg font-semibold text-accent md:text-xl">
+        Se você respondeu ‘sim’ para 2 ou mais... este vídeo é obrigatório pra você.
+      </p>
     </section>
   );
 }
