@@ -31,7 +31,7 @@ export function ForYouSection() {
               Para Quem é Este Método?
             </h2>
             <p className="text-center text-lg text-muted-foreground mb-10 max-w-3xl mx-auto">
-              Se você se identifica com qualquer um destes pontos, a transformação está a um passo de distância.
+              Se você se identificou com qualquer um dos perfis abaixo, este método é o atalho que faltava para sua transformação.
             </p>
             <div className="grid gap-6 md:grid-cols-2">
                 {profiles.map((profile, index) => (
