@@ -8,19 +8,39 @@ import {
 const faqItems = [
     {
         question: "Como acesso o curso?",
-        answer: "O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail com todas as instruções para acessar nossa área de membros exclusiva.",
+        answer: (
+            <div>
+                <p>O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail com todas as instruções para acessar nossa área de membros exclusiva.</p>
+                <p className="mt-4 text-green-500 font-semibold">✅ E você pode começar agora clicando no botão abaixo.</p>
+            </div>
+        )
     },
     {
         question: "Por quanto tempo terei acesso?",
-        answer: "No 'Acesso TESTE', você terá acesso por 3 dias ao Módulo 1. No 'Acesso PRO', o acesso ao curso completo e a todas as futuras atualizações é VITALÍCIO.",
+        answer: (
+            <div>
+                <p>No 'Acesso TESTE', você terá acesso por 3 dias ao Módulo 1. No 'Acesso PRO', o acesso ao curso completo e a todas as futuras atualizações é VITALÍCIO.</p>
+                <p className="mt-4 text-green-500 font-semibold">✅ E você pode começar agora clicando no botão abaixo.</p>
+            </div>
+        )
     },
     {
         question: "E se eu não gostar?",
-        answer: "Seu risco é zero. O Acesso PRO tem uma garantia incondicional de 7 dias, e o Acesso TESTE, de 3 dias. Se por qualquer motivo não ficar satisfeito, basta um clique para receber 100% do seu dinheiro de volta.",
+        answer: (
+            <div>
+                <p>Seu risco é zero. O Acesso PRO tem uma garantia incondicional de 7 dias, e o Acesso TESTE, de 3 dias. Se por qualquer motivo não ficar satisfeito, basta um clique para receber 100% do seu dinheiro de volta.</p>
+                <p className="mt-4 text-green-500 font-semibold">✅ E você pode começar agora clicando no botão abaixo.</p>
+            </div>
+        )
     },
     {
         question: "O curso serve para iniciantes?",
-        answer: "Sim! O método foi desenhado para levar qualquer pessoa, do absoluto zero a um nível de influência e persuasão que você jamais imaginou ser possível, de forma ética e prática.",
+        answer: (
+            <div>
+                <p>Sim! O método foi desenhado para levar qualquer pessoa, do absoluto zero a um nível de influência e persuasão que você jamais imaginou ser possível, de forma ética e prática.</p>
+                <p className="mt-4 text-green-500 font-semibold">✅ E você pode começar agora clicando no botão abaixo.</p>
+            </div>
+        )
     },
 ];
 
