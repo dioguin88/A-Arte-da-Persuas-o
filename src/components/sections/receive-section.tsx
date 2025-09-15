@@ -15,7 +15,7 @@ export function ReceiveSection() {
         <section className="py-12 bg-card/50 rounded-lg text-center">
             <div className="container mx-auto max-w-4xl">
                 <h2 className="font-headline text-3xl font-bold md:text-4xl">
-                    📦 O Que Você Vai Receber Assim Que Entrar
+                    📦 O Que Você Vai Receber Imediatamente
                 </h2>
                 <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
                     Você terá acesso imediato a todos os módulos, bônus exclusivos e materiais práticos, disponíveis em qualquer dispositivo.
