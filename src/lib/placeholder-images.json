@@ -2,5 +2,9 @@
     "productCover": {
         "src": "https://i.postimg.cc/bvtcjLpG/Chat-GPT-Image-10-de-set-de-2025-09-14-51.webp",
         "alt": "Capa do curso A Arte da Persuasão"
+    },
+    "courseMockup": {
+        "src": "https://i.postimg.cc/8Cnj50XR/screencapture-6000-firebase-studio-1757715025669-cluster-lr6dwlc2lzbcctqhqorax5zmro-cloudworkstation.png",
+        "alt": "Mockup do curso em vários dispositivos"
     }
 }
