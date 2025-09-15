@@ -10,7 +10,7 @@ export function HeroSection() {
             <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
                 <div className="text-center md:text-left">
                     <h1 className="font-headline text-4xl font-bold text-foreground md:text-5xl lg:text-6xl fade-in">
-                    ⚠️ Descubra em 7 minutos por que VOCÊ está sendo manipulado todos os dias e como virar o jogo com técnicas secretas de persuasão mental.
+                    Pare de ser controlado e assuma o poder. Aprenda como políticos, gurus e empresas usam técnicas ocultas e use você também para influenciar e conquistar respeito.
                     </h1>
                 </div>
 
