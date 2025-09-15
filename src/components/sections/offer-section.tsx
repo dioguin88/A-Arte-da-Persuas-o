@@ -14,11 +14,10 @@ const testFeatures = [
 ];
 
 const proFeatures = [
-    "Programa completo com todos os módulos",
-    "Scripts prontos para influenciar, vender e negociar",
-    "Técnicas de hipnose conversacional e presença de autoridade",
-    "Suporte VIP por 90 dias",
-    "Acesso Vitalício com todas as atualizações",
+    "Técnicas Avançadas de Persuasão Verbal e Não-Verbal",
+    "Protocolos mentais para influenciar decisões em segundos",
+    "Casos reais com análise de estrutura psicológica",
+    "Material oculto não disponível no modo TESTE",
     "Garantia total de 7 dias",
 ];
 
@@ -55,7 +54,7 @@ export function OfferSection({ testCheckoutUrl, proCheckoutUrl }: OfferSectionPr
                 {/* Pro Offer */}
                 <Card className="flex flex-col border-2 border-amber-500 bg-amber-500/10 shadow-2xl ring-4 ring-amber-500/50">
                     <CardHeader>
-                        <CardTitle className="font-headline text-2xl text-amber-400">👑 Acesso PRO</CardTitle>
+                        <CardTitle className="font-headline text-2xl text-amber-400">🔓 Desbloqueie o Acesso PRO e Entre na Mente das Pessoas</CardTitle>
                     </CardHeader>
                     <CardContent className="flex flex-1 flex-col justify-between">
                         <div>
