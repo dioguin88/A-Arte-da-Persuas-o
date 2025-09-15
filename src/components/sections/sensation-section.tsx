@@ -8,7 +8,7 @@ export function SensationSection() {
               Imagine a Sensação...
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-                ...de entrar em qualquer ambiente e ser notado. De apresentar uma ideia e ver todos concordando. De ter o poder de influenciar decisões e inspirar pessoas.
+                ...as pessoas te ouvindo com respeito, prestando atenção em cada palavra, e você sentindo a confiança de estar no controle.
             </p>
             <Card className="mt-8 bg-primary/10 border-primary shadow-lg">
                 <CardContent className="p-6">
