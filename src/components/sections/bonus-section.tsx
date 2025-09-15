@@ -27,6 +27,9 @@ export function BonusSection() {
                     </CardContent>
                 </Card>
             </div>
+            <p className="mt-6 text-md font-semibold text-muted-foreground">
+                Esses bônus estão disponíveis apenas para quem garantir o Acesso PRO enquanto durar essa condição especial.
+            </p>
         </section>
     )
 }
