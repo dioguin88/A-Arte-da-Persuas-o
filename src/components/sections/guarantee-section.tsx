@@ -11,7 +11,7 @@ export function GuaranteeSection() {
                   Garantia Incondicional
                 </h2>
                 <p className="mt-4 text-lg text-muted-foreground">
-                  Você tem 7 dias para testar o Acesso PRO (ou 3 dias no TESTE). Se não gostar, basta um clique para ser 100% reembolsado. O risco é meu. O poder agora é seu.
+                  Se dentro de 7 dias você sentir que não evoluiu, devolvemos 100% do seu investimento. Zero riscos, só transformação.
                 </p>
               </CardContent>
             </Card>
